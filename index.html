@@ -1075,26 +1075,43 @@
 
       .hero {
         min-height: 0;
-        padding: 48px 5%;
+        padding: 40px 5% 48px;
+        gap: 32px;
       }
 
       .phone-wrap {
-        width: 220px;
+        width: 195px;
       }
 
       .phone-frame {
-        width: 220px;
+        width: 195px;
       }
 
       .float-card {
-        right: -50px;
-        width: 150px;
-        font-size: 10px;
+        right: -18px;
+        top: 40px;
+        width: 125px;
+        font-size: 9.5px;
+        padding: 10px 12px;
       }
 
       .billing-toggle {
         flex-wrap: wrap;
         gap: 12px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .phone-wrap {
+        width: 172px;
+      }
+
+      .phone-frame {
+        width: 172px;
+      }
+
+      .float-card {
+        display: none;
       }
     }
   </style>
