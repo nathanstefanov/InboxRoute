@@ -1076,26 +1076,13 @@
       .hero {
         min-height: 0;
         padding: 40px 5% 48px;
-        gap: 32px;
+        gap: 20px;
       }
 
       .phone-wrap {
-        width: 195px;
-      }
-
-      .phone-frame {
-        width: 195px;
-        border-radius: 38px;
-      }
-
-      .phone-chat {
-        min-height: 0;
-        max-height: 195px;
-        overflow: hidden;
-      }
-
-      .float-card {
-        display: none;
+        transform: scale(0.68);
+        transform-origin: top center;
+        margin-bottom: -170px;
       }
 
       .billing-toggle {
@@ -1106,16 +1093,12 @@
 
     @media (max-width: 390px) {
       .phone-wrap {
-        width: 172px;
+        transform: scale(0.58);
+        margin-bottom: -225px;
       }
 
-      .phone-frame {
-        width: 172px;
-        border-radius: 34px;
-      }
-
-      .phone-chat {
-        max-height: 165px;
+      .float-card {
+        display: none;
       }
     }
   </style>
