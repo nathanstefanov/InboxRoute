@@ -16,53 +16,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─────────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.92);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.07);
-      padding: 0 5%;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo img { height: 40px; width: auto; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      color: #555;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: #1a1a2e; }
-
-    .nav-links .book-link {
-      color: #1a1a2e;
-      font-weight: 700;
-      background: #f0f0f5;
-      padding: 8px 18px;
-      border-radius: 8px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .nav-links .book-link:hover { background: #1a1a2e; color: #fff; }
-
     /* ─── PAGE ────────────────────────────────────────────── */
     .about-page {
       padding: 72px 5% 80px;
@@ -290,7 +243,6 @@
 
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 640px) {
-      .nav-links { display: none; }
       .about-page { padding: 48px 4% 64px; }
       .story-section { padding: 36px 24px; margin-bottom: 64px; }
       .team-grid { grid-template-columns: 1fr; max-width: 380px; }
@@ -300,18 +252,27 @@
 </head>
 <body>
 
-<!-- ─── NAV ─────────────────────────────────────────────── -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
-  </a>
-  <ul class="nav-links">
-    <li><a href="solutions.html">Solutions</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="index.html#pricing">Pricing</a></li>
-    <li><a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="book-link">Book a Call</a></li>
-  </ul>
-</nav>
+<div id="site-nav"></div>
+<script>
+  (function(){
+    fetch('nav.html')
+      .then(function(r){ return r.text(); })
+      .then(function(html){
+        document.getElementById('site-nav').innerHTML = html;
+        var btn = document.getElementById('hamburger-btn');
+        if (btn) btn.addEventListener('click', function(){
+          document.getElementById('mobile-menu').classList.toggle('open');
+        });
+        document.addEventListener('click', function(e){
+          if (!e.target.closest('nav') && !e.target.closest('#mobile-menu')) {
+            var m = document.getElementById('mobile-menu');
+            if (m) m.classList.remove('open');
+          }
+        });
+      })
+      .catch(function(){});
+  })();
+</script>
 
 <!-- ─── ABOUT PAGE ────────────────────────────────────────── -->
 <div class="about-page">

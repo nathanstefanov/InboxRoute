@@ -1,0 +1,179 @@
+<style>
+  /* ─── GLOBAL NAV ─────────────────────────────────────────── */
+  #site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav {
+    background: rgba(255,255,255,0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    padding: 0 5%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo img { height: 40px; width: auto; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #555;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #1a1a2e; }
+
+  .nav-links .book-link {
+    color: #1a1a2e;
+    font-weight: 700;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .linkedin-icon {
+    width: 36px;
+    height: 36px;
+    background: #0077b5;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .linkedin-icon:hover { opacity: 0.85; transform: translateY(-1px); }
+  .linkedin-icon svg { width: 20px; height: 20px; fill: white; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1a1a2e;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 5%;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 99;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a2e;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  .mobile-li-icon {
+    width: 28px;
+    height: 28px;
+    background: #0077b5;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mobile-li-icon svg { width: 16px; height: 16px; fill: white; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-right .linkedin-icon { display: none; }
+  }
+</style>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="InboxRoute_Logo_transparent.png" alt="InboxRoute">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="book-link">Book a Call</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="https://www.linkedin.com/company/inboxroute" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="linkedin-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    </a>
+    <button type="button" class="hamburger" id="hamburger-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="solutions.html">Solutions</a>
+  <a href="about.html">About</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
+  <a href="https://www.linkedin.com/company/inboxroute" target="_blank" rel="noopener noreferrer">
+    <span class="mobile-li-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </span>
+    LinkedIn
+  </a>
+</div>

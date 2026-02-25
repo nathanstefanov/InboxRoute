@@ -16,47 +16,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─────────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.92);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.07);
-      padding: 0 5%;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      height: 40px;
-      width: auto;
-    }
-
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      color: #555;
-      transition: color 0.2s;
-    }
-
-    .nav-back:hover { color: #1a1a2e; }
-
     /* ─── LEGAL PAGE ──────────────────────────────────────── */
     :root {
       --ir-text: #0f172a;
@@ -237,13 +196,27 @@
 </head>
 <body>
 
-<!-- ─── NAV ─────────────────────────────────────────────── -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
-  </a>
-  <a href="index.html" class="nav-back">← Back to Home</a>
-</nav>
+<div id="site-nav"></div>
+<script>
+  (function(){
+    fetch('nav.html')
+      .then(function(r){ return r.text(); })
+      .then(function(html){
+        document.getElementById('site-nav').innerHTML = html;
+        var btn = document.getElementById('hamburger-btn');
+        if (btn) btn.addEventListener('click', function(){
+          document.getElementById('mobile-menu').classList.toggle('open');
+        });
+        document.addEventListener('click', function(e){
+          if (!e.target.closest('nav') && !e.target.closest('#mobile-menu')) {
+            var m = document.getElementById('mobile-menu');
+            if (m) m.classList.remove('open');
+          }
+        });
+      })
+      .catch(function(){});
+  })();
+</script>
 
 <!-- ─── TERMS OF SERVICE ──────────────────────────────────── -->
 <section class="ir-legal">
