@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InboxRoute - Turn Your DMs into a 24/7 Revenue Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #1a1a2e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .pricing-screenshot {
+      text-align: center;
+      margin: 32px 0;
+    }
+
+    .pricing-screenshot img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+
+    .nav-logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a2e;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      color: #555;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1a1a2e;
+    }
+
+    .nav-links .book-link {
+      color: #1a1a2e;
+      font-weight: 600;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .linkedin-icon {
+      width: 36px;
+      height: 36px;
+      background: #0077b5;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .linkedin-icon:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    .linkedin-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1a1a2e;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: white;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 20px 5%;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a1a2e;
+      padding: 8px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero-section {
+      padding: 0;
+      background: #fff;
+    }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      padding: 80px 5% 80px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      max-width: 580px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      color: #1a1a2e;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .hero-content p {
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.65;
+      color: #555;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 18px 48px;
+      background: #1a1a2e;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(26,26,46,0.25);
+    }
+
+    .hero-cta:hover {
+      background: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(26,26,46,0.35);
+    }
+
+    /* Phone mockup */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-wrap {
+      position: relative;
+      width: 255px;
+    }
+
+    .phone-frame {
+      width: 255px;
+      background: #fff;
+      border-radius: 48px;
+      border: 6px solid #1c1c1e;
+      box-shadow:
+        0 0 0 1px #3a3a3c,
+        0 0 0 2.5px #0a0a0a,
+        inset 0 0 0 1px rgba(255,255,255,0.05),
+        0 40px 90px rgba(0,0,0,0.55),
+        0 10px 28px rgba(0,0,0,0.32);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Dynamic Island pill */
+    .phone-notch {
+      width: 90px;
+      height: 26px;
+      background: #1c1c1e;
+      border-radius: 13px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+    }
+
+    .phone-camera {
+      width: 8px;
+      height: 8px;
+      background: #2a2a2c;
+      border: 1.5px solid rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    /* Side hardware buttons */
+    .phone-side-btn {
+      position: absolute;
+      background: #2c2c2e;
+      z-index: 3;
+    }
+
+    .phone-vol-up {
+      left: -5px;
+      top: 90px;
+      width: 5px;
+      height: 28px;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .phone-vol-down {
+      left: -5px;
+      top: 128px;
+      width: 5px;
+      height: 28px;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .phone-power {
+      right: -5px;
+      top: 108px;
+      width: 5px;
+      height: 52px;
+      border-radius: 0 3px 3px 0;
+    }
+
+    /* Home indicator */
+    .phone-home-bar {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+
+    .phone-home-pill {
+      width: 96px;
+      height: 5px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 3px;
+    }
+
+    .phone-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px 2px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .phone-status-icons {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Instagram-style top nav */
+    .phone-ig-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .phone-ig-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .phone-ig-back {
+      font-size: 16px;
+      color: #1a1a2e;
+      line-height: 1;
+    }
+
+    .phone-ig-logo {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1a1a2e;
+      font-style: italic;
+      letter-spacing: -0.3px;
+    }
+
+    .phone-ig-nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .phone-ig-nav-icons svg {
+      width: 15px;
+      height: 15px;
+      stroke: #1a1a2e;
+    }
+
+    /* DM thread header */
+    .phone-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .phone-header-back {
+      font-size: 18px;
+      color: #1a1a2e;
+    }
+
+    .phone-header-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .phone-header-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .phone-online-dot {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 9px;
+      height: 9px;
+      background: #00c853;
+      border-radius: 50%;
+      border: 1.5px solid white;
+    }
+
+    .phone-header-info {
+      flex: 1;
+    }
+
+    .phone-header-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .phone-header-status {
+      font-size: 9px;
+      color: #888;
+      margin-top: 1px;
+    }
+
+    .phone-header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .phone-header-actions svg {
+      width: 15px;
+      height: 15px;
+      stroke: #1a1a2e;
+    }
+
+    .phone-chat {
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: #fff;
+      min-height: 330px;
+    }
+
+    .bubble {
+      max-width: 75%;
+      padding: 8px 12px;
+      border-radius: 18px;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .bubble-out {
+      background: #0084ff;
+      color: white;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+    }
+
+    .bubble-in {
+      background: #f0f0f0;
+      color: #1a1a2e;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .option-btn {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 10px;
+      font-weight: 500;
+      color: #1a1a2e;
+      align-self: flex-start;
+      margin-top: -2px;
+    }
+
+    .phone-input-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-top: 1px solid #f0f0f0;
+      background: #fafafa;
+    }
+
+    .phone-input-bar input {
+      flex: 1;
+      border: 1px solid #e8e8e8;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 10px;
+      outline: none;
+      color: #999;
+      background: white;
+    }
+
+    .phone-input-icon {
+      font-size: 14px;
+      color: #aaa;
+      line-height: 1;
+    }
+
+    .bubble-gap {
+      margin-top: 4px;
+    }
+
+    /* Floating calendar card */
+    .float-card {
+      position: absolute;
+      right: -130px;
+      top: 60px;
+      background: white;
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      width: 190px;
+      border: 1px solid #f0f0f0;
+      animation: float 3s ease-in-out infinite;
+      z-index: 10;
+      will-change: transform;
+    }
+
+    .float-card-confirm {
+      right: -130px;
+      top: 40px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .float-card-text {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .float-card-meeting {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .float-card-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .float-card-meeting-info strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .float-card-meeting-info span {
+      font-size: 10px;
+      color: #888;
+    }
+
+    .float-confirmed {
+      font-size: 9px;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .float-mini-cal {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+
+    .float-mini-cal span {
+      text-align: center;
+      font-size: 8px;
+      padding: 2px;
+      color: #ccc;
+      border-radius: 3px;
+    }
+
+    .float-mini-cal span.active {
+      background: #0084ff;
+      color: white;
+      font-weight: 700;
+    }
+
+    /* ─── SECTIONS ────────────────────────────────────────── */
+    section {
+      padding: 100px 5%;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      color: #1a1a2e;
+      letter-spacing: -0.02em;
+      margin-bottom: 60px;
+    }
+
+    /* ─── FEATURES ────────────────────────────────────────── */
+    #solutions {
+      background: #fff;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 40px 28px;
+      border: 2px solid #f0f0f0;
+      border-radius: 24px;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .feature-card:hover {
+      border-color: #0084ff;
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,132,255,0.15);
+    }
+
+    .feature-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+      box-shadow: 0 8px 24px rgba(0,132,255,0.3);
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* ─── HOW IT WORKS ────────────────────────────────────── */
+    #how-it-works {
+      background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+    }
+
+    .hiw-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .step-1 {
+      grid-column: 1 / 3;
+      display: flex;
+      justify-content: center;
+    }
+
+    .step-1 .step-card {
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .step-card {
+      position: relative;
+      text-align: center;
+      padding: 44px 28px 32px;
+      background: white;
+      border-radius: 20px;
+      border: 3px solid #0084ff;
+      box-shadow: 0 8px 24px rgba(0,132,255,0.12);
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,132,255,0.2);
+    }
+
+    .step-num {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(0,132,255,0.4);
+    }
+
+    .step-icon {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* ─── PRICING ─────────────────────────────────────────── */
+    #pricing {
+      background: linear-gradient(135deg, #0084ff 0%, #00c6ff 100%);
+      padding: 100px 5%;
+    }
+
+    .pricing-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pricing-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .pricing-head h2 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .pricing-head p {
+      font-size: clamp(15px, 1.5vw, 19px);
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+    }
+
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .toggle-label {
+      font-size: 17px;
+      font-weight: 600;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.3s;
+    }
+
+    .toggle-label.dim { opacity: 0.55; }
+
+    .toggle-switch {
+      position: relative;
+      width: 68px;
+      height: 34px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 17px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: left 0.35s cubic-bezier(0.68,-0.55,0.265,1.55);
+    }
+
+    .toggle-switch.on .toggle-knob { left: 37px; }
+
+    .save-badge {
+      background: #00e676;
+      color: #004d40;
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 60px;
+    }
+
+    .plan-card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0,132,255,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    }
+
+    .plan-card.featured {
+      border: 3px solid white;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+      padding-top: 52px;
+    }
+
+    .most-popular {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #00e676, #00c853);
+      color: #004d40;
+      padding: 5px 18px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,230,118,0.4);
+    }
+
+    .plan-name-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .plan-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .plan-name {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 24px;
+    }
+
+    .price-currency {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0084ff;
+    }
+
+    .price-amount {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all 0.3s ease;
+    }
+
+    .price-period {
+      font-size: 16px;
+      color: #888;
+      font-weight: 500;
+    }
+
+    .plan-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0084ff;
+      margin-bottom: 14px;
+    }
+
+    .plan-features {
+      list-style: none;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+      font-size: 14px;
+      color: #444;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      line-height: 1.4;
+    }
+
+    .plan-features li:last-child { border-bottom: none; }
+
+    .plan-features li::before {
+      content: '✓';
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .plan-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-schedule {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      color: white;
+      box-shadow: 0 6px 20px rgba(0,132,255,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,132,255,0.45);
+    }
+
+    .btn-outline {
+      background: white;
+      color: #0084ff;
+      border: 2px solid #0084ff;
+    }
+
+    .btn-outline:hover {
+      background: #0084ff;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #0084ff;
+      border: 2px solid #e0e0e0;
+      font-size: 13px;
+    }
+
+    .btn-ghost:hover {
+      border-color: #0084ff;
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
+
+    /* ─── FAQ ─────────────────────────────────────────────── */
+    #faq {
+      background: #fff;
+    }
+
+    .faq-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      border: 2px solid #f0f0f0;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .faq-item:hover { border-color: #0084ff; }
+
+    .faq-item.open {
+      border-color: #0084ff;
+      box-shadow: 0 6px 28px rgba(0,132,255,0.12);
+    }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 26px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .faq-q-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a2e;
+      flex: 1;
+      transition: color 0.3s;
+    }
+
+    .faq-item.open .faq-q-text { color: #0084ff; }
+
+    .faq-chevron {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 16px;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+
+    .faq-item.open .faq-chevron {
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      transform: rotate(180deg);
+    }
+
+    .faq-chevron svg {
+      width: 14px;
+      height: 14px;
+      stroke: #666;
+      transition: stroke 0.3s;
+    }
+
+    .faq-item.open .faq-chevron svg { stroke: white; }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 26px;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      padding: 0 26px 22px;
+    }
+
+    .faq-a p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .features-grid,
+      .plans-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step-1 {
+        grid-column: 1;
+      }
+
+      .step-1 .step-card {
+        max-width: 100%;
+      }
+
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 60px 5%;
+        gap: 60px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .float-card {
+        right: -80px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 72px 5%;
+      }
+
+      #pricing {
+        padding: 72px 5%;
+      }
+
+      .hero {
+        min-height: 0;
+        padding: 48px 5%;
+      }
+
+      .phone-wrap {
+        width: 220px;
+      }
+
+      .phone-frame {
+        width: 220px;
+      }
+
+      .float-card {
+        right: -50px;
+        width: 150px;
+        font-size: 10px;
+      }
+
+      .billing-toggle {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="book-link">Book a Call</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="https://www.linkedin.com/company/inboxroute" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="linkedin-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    </a>
+    <button type="button" class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="solutions.html" onclick="toggleMenu()">Solutions</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero-section">
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Turn Your DMs into a 24/7 Revenue Engine.</h1>
+      <p>A custom conversation workflow built specifically for your business. Our team designs everything so your DMs automatically answer questions, handle objections, and book appointments.</p>
+      <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="hero-cta">Book a Call</a>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <!-- Side buttons -->
+        <div class="phone-side-btn phone-vol-up"></div>
+        <div class="phone-side-btn phone-vol-down"></div>
+        <div class="phone-side-btn phone-power"></div>
+        <!-- Phone frame -->
+        <div class="phone-frame">
+          <div class="phone-top-bar">
+            <span>9:21</span>
+            <div class="phone-notch"><div class="phone-camera"></div></div>
+            <div class="phone-status-icons">
+              <!-- Signal bars -->
+              <svg width="13" height="10" viewBox="0 0 13 10" fill="#1a1a2e">
+                <rect x="0" y="7" width="2.5" height="3" rx="0.5"/>
+                <rect x="3.5" y="5" width="2.5" height="5" rx="0.5"/>
+                <rect x="7" y="2.5" width="2.5" height="7.5" rx="0.5"/>
+                <rect x="10.5" y="0" width="2.5" height="10" rx="0.5"/>
+              </svg>
+              <!-- WiFi -->
+              <svg width="12" height="9" viewBox="0 0 12 9" fill="none" stroke="#1a1a2e" stroke-linecap="round">
+                <path d="M1 3.2C3.1 1.1 8.9 1.1 11 3.2" stroke-width="1.4"/>
+                <path d="M2.6 4.8C4 3.4 8 3.4 9.4 4.8" stroke-width="1.4"/>
+                <circle cx="6" cy="8" r="1" fill="#1a1a2e" stroke="none"/>
+              </svg>
+              <!-- Battery -->
+              <svg width="20" height="10" viewBox="0 0 20 10" fill="none">
+                <rect x="0.5" y="1.5" width="16" height="7" rx="2" stroke="#1a1a2e" stroke-width="1"/>
+                <rect x="16.5" y="3.5" width="2" height="3" rx="0.5" fill="#1a1a2e"/>
+                <rect x="1.5" y="2.5" width="11" height="5" rx="1" fill="#1a1a2e"/>
+              </svg>
+            </div>
+          </div>
+          <!-- Instagram-style top nav -->
+          <div class="phone-ig-nav">
+            <div class="phone-ig-nav-left">
+              <span class="phone-ig-back">←</span>
+              <span class="phone-ig-logo">Instagram</span>
+            </div>
+            <div class="phone-ig-nav-icons">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+          </div>
+          <!-- DM thread header -->
+          <div class="phone-header">
+            <div class="phone-header-avatar-wrap">
+              <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute" class="phone-header-avatar">
+              <div class="phone-online-dot"></div>
+            </div>
+            <div class="phone-header-info">
+              <div class="phone-header-name">InboxRoute</div>
+              <div class="phone-header-status">Active now</div>
+            </div>
+            <div class="phone-header-actions">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.94-1.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.26z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </div>
+          </div>
+          <div class="phone-chat">
+            <div class="bubble bubble-out">Do you have pricing info?</div>
+            <div class="bubble bubble-in">Yes, we do! We have three plans available.</div>
+            <div class="option-btn">Starter – $199/mo</div>
+            <div class="option-btn">Standard – $299/mo</div>
+            <div class="option-btn">Pro – $499/mo</div>
+            <div class="bubble bubble-out bubble-gap">Standard works for us — how do I get started?</div>
+            <div class="bubble bubble-in">Awesome! I'll book a demo call for you to get started.</div>
+          </div>
+          <div class="phone-input-bar">
+            <span class="phone-input-icon">📷</span>
+            <input type="text" placeholder="Message..." readonly>
+            <span class="phone-input-icon">🎤</span>
+            <span class="phone-input-icon">😊</span>
+          </div>
+          <div class="phone-home-bar"><div class="phone-home-pill"></div></div>
+        </div>
+
+        <!-- Floating calendar card -->
+        <div class="float-card">
+          <div class="float-card-text">Event confirmed! Looking forward to our call tomorrow.</div>
+          <div class="float-card-meeting">
+            <div class="float-card-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
+                <path d="M8 2V6M16 2V6M3 10H21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="float-card-meeting-info">
+              <strong>Meet with InboxRoute</strong>
+              <span>Tomorrow at 11:00 AM</span>
+            </div>
+          </div>
+          <div class="float-confirmed">CONFIRMED</div>
+          <div class="float-mini-cal">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+            <span>8</span><span>9</span><span>10</span><span class="active">11</span><span>12</span><span>13</span><span>14</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ─────────────────────────────────────────── -->
+<section id="solutions">
+  <div class="section-inner">
+    <h2 class="section-title">What InboxRoute Does</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Instant Human-Like Replies</h3>
+        <p class="feature-desc">Your workflow is trained on your exact services, pricing, and policies to answer inquiries instantly in a natural, professional tone.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="white" stroke-width="2"/>
+            <path d="M12 6V12L16 14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Dynamic Conversations</h3>
+        <p class="feature-desc">Actively navigates pricing concerns, answers nuanced questions, and handles objections so prospects have the exact information they need.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
+            <path d="M8 2V6M16 2V6M3 10H21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Seamless Routing & Booking</h3>
+        <p class="feature-desc">Once questions are answered, the conversation is automatically routed directly to your preferred calendar link or website to secure the next step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─────────────────────────────────────── -->
+<section id="how-it-works">
+  <div class="hiw-inner">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-grid">
+      <div class="step-1">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="white" stroke-width="2"/>
+              <path d="M22 6L12 13L2 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-title">A Potential Client Sends a DM</h3>
+          <p class="step-desc">A user messages your Instagram or Facebook page with questions about your services, pricing, or availability.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+            <path d="M9.09 9C9.33 8.33 9.79 7.77 10.4 7.41C11.01 7.05 11.73 6.92 12.43 7.04C13.13 7.16 13.76 7.52 14.22 8.06C14.67 8.61 14.92 9.29 14.92 10C14.92 12 11.92 13 11.92 13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="17" r="1" fill="white"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Your Custom Workflow Engages</h3>
+        <p class="step-desc">The workflow replies instantly in your business's voice, answering specific questions and actively handling objections.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
+            <path d="M8 2V6M16 2V6M3 10H21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="8" cy="14" r="1" fill="white"/>
+            <circle cx="12" cy="14" r="1" fill="white"/>
+            <circle cx="16" cy="14" r="1" fill="white"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Seamless Routing to Booking</h3>
+        <p class="step-desc">Once their questions are answered, the workflow automatically provides your preferred scheduling link or website to secure the appointment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ──────────────────────────────────────────── -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-head">
+      <h2>Pricing</h2>
+      <p>Choose the perfect plan for your business growth</p>
+      <div class="billing-toggle">
+        <span class="toggle-label" id="lbl-monthly">Monthly</span>
+        <div class="toggle-switch" id="billing-toggle" onclick="toggleBilling()">
+          <div class="toggle-knob"></div>
+        </div>
+        <span class="toggle-label dim" id="lbl-annual">
+          Annual <span class="save-badge">Save up to 25%</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="plans-grid">
+      <!-- Starter -->
+      <div class="plan-card">
+        <div class="plan-name-row">
+          <div class="plan-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="plan-name">Starter</span>
+        </div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" data-monthly="199" data-annual="149">199</span>
+          <span class="price-period">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li>One Platform (Instagram or Facebook)</li>
+          <li>Unlimited DM conversations</li>
+          <li>AI-powered responses 24/7</li>
+          <li>Pricing and service information</li>
+          <li>Provides booking link instantly</li>
+          <li>Monthly performance dashboard</li>
+        </ul>
+        <div class="plan-btns">
+          <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="btn-schedule btn-outline">Schedule a Call</a>
+          <a href="https://buy.stripe.com/aFa28s28f8D8dCm64W18c02" target="_blank" rel="noopener noreferrer" class="btn-schedule btn-ghost">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Pro (featured) -->
+      <div class="plan-card featured">
+        <div class="most-popular">MOST POPULAR</div>
+        <div class="plan-name-row">
+          <div class="plan-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="plan-name">Pro</span>
+        </div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" data-monthly="499" data-annual="374">499</span>
+          <span class="price-period">/month</span>
+        </div>
+        <p class="plan-label">Everything in Standard, plus:</p>
+        <ul class="plan-features">
+          <li>Both platforms (Instagram + Facebook)</li>
+          <li>Weekly strategy calls</li>
+          <li>Integration with your booking system</li>
+          <li>Advanced analytics dashboard</li>
+          <li>Priority feature requests</li>
+        </ul>
+        <div class="plan-btns">
+          <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="btn-schedule btn-primary">Schedule a Call</a>
+          <a href="https://buy.stripe.com/eVq4gAfZ5aLgfKufFw18c00" target="_blank" rel="noopener noreferrer" class="btn-schedule btn-ghost">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Standard -->
+      <div class="plan-card">
+        <div class="plan-name-row">
+          <div class="plan-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+              <path d="M12 6V12L16 14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="plan-name">Standard</span>
+        </div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" data-monthly="299" data-annual="224">299</span>
+          <span class="price-period">/month</span>
+        </div>
+        <p class="plan-label">Everything in Starter, plus:</p>
+        <ul class="plan-features">
+          <li>Handles complex objections</li>
+          <li>Multi-service conversation management</li>
+          <li>Faster optimization & support</li>
+          <li>Bi-weekly performance reports</li>
+        </ul>
+        <div class="plan-btns">
+          <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="btn-schedule btn-outline">Schedule a Call</a>
+          <a href="https://buy.stripe.com/4gMbJ28wD5qW8i2alc18c01" target="_blank" rel="noopener noreferrer" class="btn-schedule btn-ghost">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="faq-inner">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is this a workflow I have to set up and manage myself?</span>
+          <div class="faq-chevron">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>No. InboxRoute is a fully managed service. We handle everything from the custom workflow design to the ongoing technical management. You never have to touch the technology.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Will the responses sound like a robotic menu to my customers?</span>
+          <div class="faq-chevron">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>Not at all. We use advanced language models to create natural, context-aware responses that adapt to each prospect. It sounds like a professional team member, not a script.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is there a risk of my Instagram or Facebook account getting banned?</span>
+          <div class="faq-chevron">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>Account safety is our top priority. We operate as a Meta-compliant partner, building your custom workflow exclusively on 100% Meta approved infrastructure. This ensures your account remains completely safe and compliant with all platform rules.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Am I locked into a long-term contract?</span>
+          <div class="faq-chevron">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>No. We operate on a month-to-month basis with no long-term contracts. We believe in earning your business every single month by delivering real results.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script>
+  (function(){
+    fetch('footer.html')
+      .then(function(r){ return r.text(); })
+      .then(function(html){ document.getElementById('site-footer').innerHTML = html; })
+      .catch(function(){});
+  })();
+</script>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('nav') && !e.target.closest('#mobile-menu')) {
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
+  });
+
+  // Billing toggle
+  let isAnnual = false;
+
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    const toggle = document.getElementById('billing-toggle');
+    const lblMonthly = document.getElementById('lbl-monthly');
+    const lblAnnual = document.getElementById('lbl-annual');
+
+    toggle.classList.toggle('on', isAnnual);
+    lblMonthly.classList.toggle('dim', isAnnual);
+    lblAnnual.classList.toggle('dim', !isAnnual);
+
+    document.querySelectorAll('.price-amount').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'scale(0.85)';
+      setTimeout(() => {
+        el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+        el.style.opacity = '1';
+        el.style.transform = 'scale(1)';
+      }, 200);
+    });
+  }
+
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Smooth nav scroll + active state
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Transition for price-amount
+  document.querySelectorAll('.price-amount').forEach(el => {
+    el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+  });
+</script>
+</body>
+</html>

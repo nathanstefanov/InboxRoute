@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solutions – InboxRoute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 40px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      color: #555;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #1a1a2e; }
+
+    .nav-links .book-link {
+      color: #1a1a2e;
+      font-weight: 700;
+      background: #f0f0f5;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links .book-link:hover { background: #1a1a2e; color: #fff; }
+
+    /* ─── PAGE HERO ───────────────────────────────────────── */
+    .page-hero {
+      text-align: center;
+      padding: 64px 5% 48px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .page-hero p {
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: #666;
+    }
+
+    /* ─── SECTIONS ────────────────────────────────────────── */
+    .solutions-section {
+      padding: 40px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      color: #1a1a2e;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .section-description {
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* ─── SOLUTION CARDS ──────────────────────────────────── */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .how-it-works-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .solution-card {
+      background: #fff;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .solution-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, #0084ff, #00c6ff);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .solution-card:hover::before { transform: scaleX(1); }
+    .solution-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+
+    .solution-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .solution-icon svg { width: 26px; height: 26px; }
+
+    .solution-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .solution-description {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ─── INDUSTRIES ──────────────────────────────────────── */
+    .industries-wrapper {
+      background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+      border-radius: 20px;
+      padding: 48px 5%;
+      margin: 0 0 40px 0;
+    }
+
+    .industries-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .industry-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .industry-card:hover {
+      border-color: #0084ff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,132,255,0.1);
+    }
+
+    .industry-emoji {
+      font-size: 32px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .industry-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .industry-description {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* ─── CTA ─────────────────────────────────────────────── */
+    .cta-wrapper {
+      padding: 0 5% 64px;
+    }
+
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #0084ff 0%, #00c6ff 100%);
+      border-radius: 20px;
+      padding: 56px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .cta-content { position: relative; z-index: 1; }
+
+    .cta-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .cta-description {
+      font-size: clamp(15px, 2vw, 17px);
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 28px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #0084ff;
+      padding: 15px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .cta-button-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      padding: 15px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      border: 2px solid rgba(255,255,255,0.5);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .cta-button-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.9);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (min-width: 640px) {
+      .solutions-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .how-it-works-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .cta-buttons { flex-direction: row; justify-content: center; }
+    }
+
+    @media (min-width: 1002px) {
+      .industries-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
+  </a>
+  <ul class="nav-links">
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="book-link">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- ─── PAGE HERO ─────────────────────────────────────────── -->
+<div class="page-hero">
+  <h1>The InboxRoute Solution</h1>
+  <p>Automated Instagram &amp; Facebook DM workflows that turn conversations into booked appointments.</p>
+</div>
+
+<!-- ─── WHAT INBOXROUTE SOLVES ─────────────────────────────── -->
+<section class="solutions-section">
+  <div class="section-header">
+    <h2 class="section-title">What InboxRoute Solves</h2>
+  </div>
+  <div class="solutions-grid">
+    <div class="solution-card">
+      <h3 class="solution-title">Missed Opportunities</h3>
+      <p class="solution-description">You lose revenue when prospects message you late at night, on weekends, or when you're simply too busy to reply instantly.</p>
+    </div>
+    <div class="solution-card">
+      <h3 class="solution-title">Wasted Team Time</h3>
+      <p class="solution-description">Answering the exact same pricing, availability, and service questions day after day drains your energy and focus.</p>
+    </div>
+    <div class="solution-card">
+      <h3 class="solution-title">Dropped Conversations</h3>
+      <p class="solution-description">Modern consumers expect instant answers. When replies are slow, prospects lose interest and move on to a competitor before booking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW INBOXROUTE WORKS ───────────────────────────────── -->
+<section class="solutions-section">
+  <div class="section-header">
+    <h2 class="section-title">How InboxRoute Works</h2>
+  </div>
+  <div class="how-it-works-grid">
+    <div class="solution-card">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Instant Responses</h3>
+      <p class="solution-description">Replies immediately to inbound Instagram &amp; Facebook messages, ensuring no prospect is ever left waiting even after hours.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="17" r="0.5" fill="currentColor" stroke="currentColor"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Dynamic Conversations</h3>
+      <p class="solution-description">Goes beyond basic bots to actively navigate pricing concerns, service details, and routine questions using your custom knowledge base.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 8v6m-3-3h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Custom Brand Voice</h3>
+      <p class="solution-description">Trained on your specific business details, ensuring every reply sounds like a natural, professional extension of your actual team.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Automated Routing</h3>
+      <p class="solution-description">Delivers your preferred booking link or website directly to the user the exact moment their questions are resolved.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BUILT FOR YOUR INDUSTRY ────────────────────────────── -->
+<div class="industries-wrapper">
+  <div class="industries-inner">
+    <div class="section-header">
+      <h2 class="section-title">Built for Your Industry</h2>
+      <p class="section-description">Trusted by businesses across every vertical</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card">
+        <span class="industry-emoji">💼</span>
+        <h3 class="industry-name">Professional Services</h3>
+        <p class="industry-description">Consultants, coaches, and agencies using DMs to seamlessly book discovery calls</p>
+      </div>
+      <div class="industry-card">
+        <span class="industry-emoji">🏋️</span>
+        <h3 class="industry-name">Fitness &amp; Wellness</h3>
+        <p class="industry-description">Gyms, trainers, and wellness brands managing class bookings and membership inquiries</p>
+      </div>
+      <div class="industry-card">
+        <span class="industry-emoji">🏠</span>
+        <h3 class="industry-name">Real Estate</h3>
+        <p class="industry-description">Agents automating property inquiries and instantly routing buyers to showing requests</p>
+      </div>
+      <div class="industry-card">
+        <span class="industry-emoji">✂️</span>
+        <h3 class="industry-name">Beauty &amp; Salons</h3>
+        <p class="industry-description">Salons, barbers, and spas keeping their chairs full with automated appointment bookings</p>
+      </div>
+      <div class="industry-card">
+        <span class="industry-emoji">🛍️</span>
+        <h3 class="industry-name">E-commerce</h3>
+        <p class="industry-description">Online brands instantly answering product questions and routing buyers directly to checkout pages</p>
+      </div>
+      <div class="industry-card">
+        <span class="industry-emoji">🍕</span>
+        <h3 class="industry-name">Restaurants &amp; Food</h3>
+        <p class="industry-description">High-volume venues managing event inquiries, catering requests, and reservations</p>
+      </div>
+      <div class="industry-card">
+        <span class="industry-emoji">🎓</span>
+        <h3 class="industry-name">Education &amp; Training</h3>
+        <p class="industry-description">Course creators and educators routing prospective students to enrollment calls</p>
+      </div>
+      <div class="industry-card">
+        <span class="industry-emoji">🏢</span>
+        <h3 class="industry-name">B2B Services</h3>
+        <p class="industry-description">Software companies and service providers routing enterprise prospects directly to demo calls</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CTA ────────────────────────────────────────────────── -->
+<div class="cta-wrapper">
+  <div class="cta-inner">
+    <div class="cta-section">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Get Started?</h2>
+        <p class="cta-description">Let our team build a fully managed workflow so you and your team can focus on running your business.</p>
+        <div class="cta-buttons">
+          <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
+          <a href="calculator.html" class="cta-button-secondary">Calculate Your Revenue Leak</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  (function(){
+    fetch('footer.html')
+      .then(function(r){ return r.text(); })
+      .then(function(html){ document.getElementById('site-footer').innerHTML = html; })
+      .catch(function(){});
+  })();
+</script>
+
+</body>
+</html>

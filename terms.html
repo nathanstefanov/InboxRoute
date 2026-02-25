@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service – InboxRoute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: #1a1a2e; }
+
+    /* ─── LEGAL PAGE ──────────────────────────────────────── */
+    :root {
+      --ir-text: #0f172a;
+      --ir-muted: #475569;
+      --ir-border: #e2e8f0;
+      --ir-bg: #ffffff;
+      --ir-card: #f8fafc;
+      --ir-link: #2563eb;
+    }
+
+    .ir-legal {
+      background: var(--ir-bg);
+      color: var(--ir-text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 48px 5% 64px;
+      margin: 0;
+      width: 100%;
+    }
+
+    .ir-legal__container {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .ir-legal__header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .ir-legal__title {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.1;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      color: #1a1a2e;
+    }
+
+    .ir-legal__meta {
+      margin: 0 0 16px 0;
+      color: var(--ir-muted);
+      font-size: 14px;
+    }
+
+    .ir-legal__intro {
+      margin: 0 0 10px 0;
+      color: var(--ir-text);
+      font-size: clamp(14px, 2vw, 16px);
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .ir-legal__toc {
+      border: 1px solid var(--ir-border);
+      border-radius: 16px;
+      padding: 18px 24px;
+      background: var(--ir-card);
+      margin: 0 0 8px 0;
+    }
+
+    .ir-legal__toc-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ir-muted);
+      margin: 0 0 10px 0;
+      font-weight: 600;
+    }
+
+    .ir-legal__toc-list {
+      margin: 0;
+      padding: 0 0 0 20px;
+      columns: 1;
+    }
+
+    @media (min-width: 640px) {
+      .ir-legal__toc-list {
+        columns: 2;
+        column-gap: 20px;
+      }
+    }
+
+    .ir-legal__toc-list li {
+      margin: 6px 0;
+      break-inside: avoid;
+      font-size: 14px;
+    }
+
+    .ir-legal__card {
+      border: 1px solid var(--ir-border);
+      border-radius: 16px;
+      background: #fff;
+      padding: 16px 24px 24px;
+      margin: 24px 0 0 0;
+    }
+
+    .ir-legal__body {
+      border-top: 1px solid var(--ir-border);
+      padding-top: 20px;
+    }
+
+    .ir-legal__section {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--ir-border);
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    .ir-legal__section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .ir-legal__section h2 {
+      font-size: clamp(17px, 3vw, 20px);
+      margin: 0 0 10px 0;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .ir-legal__section h3 {
+      font-size: clamp(14px, 2.5vw, 15px);
+      margin: 14px 0 6px 0;
+      font-weight: 600;
+      color: var(--ir-text);
+    }
+
+    .ir-legal__section p {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #334155;
+    }
+
+    .ir-legal__section p:last-child { margin-bottom: 0; }
+
+    .ir-legal__section ul {
+      margin: 0 0 12px 0;
+      padding-left: 20px;
+    }
+
+    .ir-legal__section ul:last-child { margin-bottom: 0; }
+
+    .ir-legal__section li {
+      margin: 5px 0;
+      color: #334155;
+      font-size: 14px;
+    }
+
+    .ir-legal__contact {
+      margin: 10px 0 0 0;
+      color: #334155;
+      font-size: 14px;
+    }
+
+    .ir-legal__footer {
+      margin: 32px 0 0 0;
+      padding: 20px 0 0 0;
+      border-top: 1px solid var(--ir-border);
+      color: var(--ir-muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .ir-legal a { color: var(--ir-link); text-decoration: none; }
+    .ir-legal a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .ir-legal { padding: 32px 4% 48px; }
+      .ir-legal__card { padding: 12px 14px 18px; }
+      .ir-legal__toc { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<!-- ─── TERMS OF SERVICE ──────────────────────────────────── -->
+<section class="ir-legal">
+  <div class="ir-legal__container">
+
+    <header class="ir-legal__header">
+      <h1 class="ir-legal__title">Terms of Service</h1>
+      <p class="ir-legal__meta"><strong>Last Updated:</strong> January 16, 2026</p>
+      <p class="ir-legal__intro">These Terms of Service ("Terms") govern your access to and use of InboxRoute ("InboxRoute," "we," "us," or "our"), including our website, services, software, automations, integrations, and related tools or communications (collectively, the "Service").</p>
+      <p class="ir-legal__intro">By accessing, purchasing, or using the Service, you ("Customer," "you," or "your") agree to be legally bound by these Terms. If you do not agree, you must not access or use the Service.</p>
+    </header>
+
+    <div class="ir-legal__toc" role="navigation" aria-label="Table of contents">
+      <h2 class="ir-legal__toc-title">Contents</h2>
+      <ol class="ir-legal__toc-list">
+        <li><a href="#sec-1">Description of Service</a></li>
+        <li><a href="#sec-2">Eligibility &amp; Authority</a></li>
+        <li><a href="#sec-3">Third-Party Platforms &amp; Meta Disclaimer</a></li>
+        <li><a href="#sec-4">Customer Responsibilities</a></li>
+        <li><a href="#sec-5">No Business, Marketing, or Legal Advice</a></li>
+        <li><a href="#sec-6">No Guarantees &amp; Assumption of Risk</a></li>
+        <li><a href="#sec-7">Subscription, Billing &amp; Payments</a></li>
+        <li><a href="#sec-8">Cancellation &amp; Termination</a></li>
+        <li><a href="#sec-9">Intellectual Property</a></li>
+        <li><a href="#sec-10">Data &amp; Privacy</a></li>
+        <li><a href="#sec-11">Force Majeure</a></li>
+        <li><a href="#sec-12">Limitation of Liability</a></li>
+        <li><a href="#sec-13">Indemnification</a></li>
+        <li><a href="#sec-14">Arbitration &amp; Dispute Resolution</a></li>
+        <li><a href="#sec-15">Governing Law</a></li>
+        <li><a href="#sec-16">Modifications</a></li>
+        <li><a href="#sec-17">Entire Agreement</a></li>
+        <li><a href="#sec-18">Contact</a></li>
+      </ol>
+    </div>
+
+    <div class="ir-legal__card">
+      <article class="ir-legal__body">
+
+        <section id="sec-1" class="ir-legal__section">
+          <h2>1. Description of Service</h2>
+          <p>InboxRoute provides automated inbound messaging and lead-routing services for social media platforms, including but not limited to:</p>
+          <ul>
+            <li>Instagram Direct Messages</li>
+            <li>Facebook Page Messenger</li>
+          </ul>
+          <p>The Service may include:</p>
+          <ul>
+            <li>Automated responses to inbound messages</li>
+            <li>Handling of frequently asked questions</li>
+            <li>Lead qualification and data capture</li>
+            <li>Routing of conversations to booking links, forms, or human operators</li>
+            <li>Ongoing configuration, optimization, or monitoring depending on plan</li>
+          </ul>
+          <p>InboxRoute does <strong>not</strong> guarantee outcomes, results, performance, revenue, leads, bookings, or business success.</p>
+        </section>
+
+        <section id="sec-2" class="ir-legal__section">
+          <h2>2. Eligibility &amp; Authority</h2>
+          <p>You represent and warrant that:</p>
+          <ul>
+            <li>You are at least 18 years old</li>
+            <li>You have full authority to bind the business you represent</li>
+            <li>You own or are authorized to control the connected social media accounts</li>
+          </ul>
+          <p>You are solely responsible for ensuring your use of the Service complies with all applicable laws, regulations, and platform rules.</p>
+        </section>
+
+        <section id="sec-3" class="ir-legal__section">
+          <h2>3. Third-Party Platforms &amp; Meta Disclaimer</h2>
+          <p>InboxRoute integrates with third-party platforms, including Meta Platforms, Inc. (Instagram and Facebook).</p>
+          <p>You acknowledge and agree that:</p>
+          <ul>
+            <li>InboxRoute is <strong>not</strong> affiliated with, endorsed by, or partnered with Meta</li>
+            <li>Platform rules, APIs, enforcement actions, outages, or policy changes are entirely outside of InboxRoute's control</li>
+            <li>Any restriction, suspension, limitation, or termination imposed by a third-party platform does <strong>not</strong> constitute a breach by InboxRoute</li>
+          </ul>
+          <p>InboxRoute is <strong>not responsible</strong> for:</p>
+          <ul>
+            <li>Account bans, throttling, or shadow restrictions</li>
+            <li>Platform outages or API changes</li>
+            <li>Enforcement actions related to your business, content, or messaging behavior</li>
+          </ul>
+        </section>
+
+        <section id="sec-4" class="ir-legal__section">
+          <h2>4. Customer Responsibilities</h2>
+          <p>You agree that you are solely responsible for:</p>
+          <ul>
+            <li>The content of all messages sent on your behalf</li>
+            <li>The legality, accuracy, and compliance of all communications</li>
+            <li>Obtaining all required customer consents</li>
+            <li>How leads are handled after delivery</li>
+          </ul>
+          <p>You agree <strong>not</strong> to use the Service for:</p>
+          <ul>
+            <li>Spam or unsolicited outbound messaging</li>
+            <li>Harassment, fraud, or deceptive practices</li>
+            <li>Any activity prohibited by platform rules or law</li>
+          </ul>
+          <p>InboxRoute acts solely as a technical service provider and does not control or direct your business decisions.</p>
+        </section>
+
+        <section id="sec-5" class="ir-legal__section">
+          <h2>5. No Business, Marketing, or Legal Advice</h2>
+          <p>InboxRoute does <strong>not</strong> provide business, marketing, financial, or legal advice.</p>
+          <p>Any recommendations, automated responses, message flows, or routing logic:</p>
+          <ul>
+            <li>Are provided for general informational purposes only</li>
+            <li>Do not constitute professional advice</li>
+            <li>Are used entirely at your own discretion and risk</li>
+          </ul>
+          <p>You acknowledge that all business decisions made using the Service are your responsibility.</p>
+        </section>
+
+        <section id="sec-6" class="ir-legal__section">
+          <h2>6. No Guarantees &amp; Assumption of Risk</h2>
+          <p>InboxRoute makes <strong>no representations or warranties</strong> regarding:</p>
+          <ul>
+            <li>Lead volume</li>
+            <li>Conversion rates</li>
+            <li>Revenue or bookings</li>
+            <li>Message accuracy or customer behavior</li>
+          </ul>
+          <p>You expressly acknowledge and agree that:</p>
+          <ul>
+            <li>Automation and AI systems are inherently probabilistic and imperfect</li>
+            <li>Results vary based on market conditions, pricing, customer behavior, and platform algorithms</li>
+            <li>Use of the Service involves inherent risk</li>
+          </ul>
+          <p>You voluntarily assume <strong>all risks</strong> associated with use of the Service.</p>
+        </section>
+
+        <section id="sec-7" class="ir-legal__section">
+          <h2>7. Subscription, Billing &amp; Payments</h2>
+          <h3>7(a). Subscription Authorization</h3>
+          <p>By subscribing, you authorize InboxRoute to charge your selected payment method on a recurring basis until canceled.</p>
+          <h3>7(b). No Refunds</h3>
+          <p>All payments are <strong>final and non-refundable</strong>, including setup fees, subscription fees, partial billing periods, and unused time. No refunds will be issued for dissatisfaction, lack of results, platform changes, or early termination.</p>
+          <h3>7(c). Chargebacks</h3>
+          <p>Unauthorized chargebacks constitute a material breach of these Terms and may result in immediate termination, permanent account suspension, and collection efforts and dispute evidence submission.</p>
+        </section>
+
+        <section id="sec-8" class="ir-legal__section">
+          <h2>8. Cancellation &amp; Termination</h2>
+          <p>You may cancel your subscription at any time. Cancellation stops future billing only and does not trigger refunds.</p>
+          <p>InboxRoute may suspend or terminate access immediately if these Terms are violated, payment fails, or the Service is used unlawfully or abusively.</p>
+        </section>
+
+        <section id="sec-9" class="ir-legal__section">
+          <h2>9. Intellectual Property</h2>
+          <p>All Service components — including software, workflows, logic, designs, and documentation — are the exclusive property of InboxRoute.</p>
+          <p>You may not:</p>
+          <ul>
+            <li>Copy, reverse engineer, resell, or sublicense the Service</li>
+            <li>Use InboxRoute branding without permission</li>
+          </ul>
+          <p>You retain ownership of your business data.</p>
+        </section>
+
+        <section id="sec-10" class="ir-legal__section">
+          <h2>10. Data &amp; Privacy</h2>
+          <p>InboxRoute processes data solely to provide the Service. You acknowledge that you are responsible for privacy compliance and consent. InboxRoute does not sell customer data. Data usage is governed by our <a href="privacy.html">Privacy Policy</a>.</p>
+          <p>InboxRoute is not responsible for how you store, use, or secure lead data after delivery.</p>
+        </section>
+
+        <section id="sec-11" class="ir-legal__section">
+          <h2>11. Force Majeure</h2>
+          <p>InboxRoute shall not be liable for any failure or delay caused by events beyond reasonable control, including but not limited to platform outages, API changes, internet failures, government actions, natural disasters, or labor disputes.</p>
+        </section>
+
+        <section id="sec-12" class="ir-legal__section">
+          <h2>12. Limitation of Liability</h2>
+          <p>To the maximum extent permitted by law, InboxRoute shall not be liable for indirect, incidental, consequential, or punitive damages. InboxRoute's total liability shall not exceed the amount paid by you to InboxRoute in the <strong>30 days</strong> preceding the claim.</p>
+          <p>This limitation applies regardless of legal theory.</p>
+        </section>
+
+        <section id="sec-13" class="ir-legal__section">
+          <h2>13. Indemnification</h2>
+          <p>You agree to indemnify, defend, and hold harmless InboxRoute from all claims, losses, damages, and expenses arising from:</p>
+          <ul>
+            <li>Your use of the Service</li>
+            <li>Your messaging content</li>
+            <li>Your business practices</li>
+            <li>Violations of law or platform rules</li>
+          </ul>
+        </section>
+
+        <section id="sec-14" class="ir-legal__section">
+          <h2>14. Arbitration &amp; Dispute Resolution</h2>
+          <p>Any dispute arising from these Terms or the Service shall be resolved exclusively through binding arbitration, not in court.</p>
+          <p>You waive:</p>
+          <ul>
+            <li>The right to a jury trial</li>
+            <li>The right to participate in class actions</li>
+          </ul>
+          <p>Arbitration shall be conducted on an individual basis under applicable arbitration rules.</p>
+        </section>
+
+        <section id="sec-15" class="ir-legal__section">
+          <h2>15. Governing Law</h2>
+          <p>These Terms are governed by the laws of the State of <strong>Illinois</strong>, without regard to conflict-of-law principles.</p>
+        </section>
+
+        <section id="sec-16" class="ir-legal__section">
+          <h2>16. Modifications</h2>
+          <p>InboxRoute may update these Terms at any time. Continued use constitutes acceptance of updated Terms.</p>
+        </section>
+
+        <section id="sec-17" class="ir-legal__section">
+          <h2>17. Entire Agreement</h2>
+          <p>These Terms constitute the entire agreement between you and InboxRoute and supersede all prior communications.</p>
+        </section>
+
+        <section id="sec-18" class="ir-legal__section">
+          <h2>18. Contact</h2>
+          <p>For questions regarding these Terms, contact:</p>
+          <p class="ir-legal__contact">
+            <strong>InboxRoute</strong><br>
+            Email: <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a>
+          </p>
+        </section>
+
+      </article>
+    </div>
+
+    <footer class="ir-legal__footer">
+      <p><strong>End of Terms of Service</strong></p>
+      <p>© <span id="ir-year">2026</span> InboxRoute. All rights reserved.</p>
+    </footer>
+
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script>
+  (function(){
+    fetch('footer.html')
+      .then(function(r){ return r.text(); })
+      .then(function(html){ document.getElementById('site-footer').innerHTML = html; })
+      .catch(function(){});
+  })();
+</script>
+
+<script>
+  try {
+    var y = document.getElementById('ir-year');
+    if (y) y.textContent = String(new Date().getFullYear());
+  } catch(e) {}
+</script>
+</body>
+</html>

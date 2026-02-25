@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DM Revenue Leak Calculator – InboxRoute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f6fa;
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      color: #555;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #1a1a2e; }
+
+    .nav-links .book-link {
+      color: #1a1a2e;
+      font-weight: 700;
+      background: #f0f0f5;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links .book-link:hover { background: #1a1a2e; color: #fff; }
+
+    /* ─── PAGE LAYOUT ─────────────────────────────────────── */
+    .calc-page {
+      padding: 56px 5% 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ─── HEADER ──────────────────────────────────────────── */
+    .calc-header {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 620px;
+    }
+
+    .calc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(230,48,39,0.09);
+      color: #c8281f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .calc-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #e63027;
+      border-radius: 50%;
+    }
+
+    .calc-header h1 {
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #1a1a2e;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .calc-header p {
+      font-size: clamp(15px, 2vw, 17px);
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* ─── CARD ────────────────────────────────────────────── */
+    .calc-card {
+      width: 100%;
+      max-width: 560px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 40px 40px 36px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 20px 40px rgba(0,0,0,0.07);
+    }
+
+    .card-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    /* ─── FORM ────────────────────────────────────────────── */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 7px;
+    }
+
+    .form-group label .required { color: #e63027; }
+    .form-group label .label-optional { font-weight: 400; color: #9ca3af; }
+
+    .form-group select,
+    .form-group input[type="number"],
+    .form-group input[type="email"] {
+      width: 100%;
+      height: 48px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0 16px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #1a1a2e;
+      background: #f8fafc;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      outline: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+
+    .form-group select:focus,
+    .form-group input:focus {
+      border-color: #0084ff;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(0,132,255,0.1);
+    }
+
+    .form-divider {
+      border: none;
+      border-top: 1px solid #f1f5f9;
+      margin: 24px 0;
+    }
+
+    .calc-btn {
+      width: 100%;
+      height: 52px;
+      background: linear-gradient(135deg, #e63027 0%, #c8281f 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230,48,39,0.4);
+    }
+
+    .calc-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230,48,39,0.45);
+    }
+
+    .calc-btn:active { transform: translateY(0); }
+
+    /* ─── RESULTS ─────────────────────────────────────────── */
+    .results {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .results.visible {
+      display: block;
+    }
+
+    .results.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .results-divider {
+      border: none;
+      border-top: 1px solid #f1f5f9;
+      margin: 28px 0 24px;
+    }
+
+    .results-top {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 28px 24px 24px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .results-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 10px;
+    }
+
+    .results-amount {
+      font-size: clamp(40px, 8vw, 58px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #ff6b6b;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .results-period {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .results-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .breakdown-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .b-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 4px;
+    }
+
+    .b-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: #1a1a2e;
+      letter-spacing: -0.02em;
+    }
+
+    .results-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      background: #0084ff;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .results-cta:hover { background: #006ed6; transform: translateY(-1px); }
+
+    .results-note {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 14px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ─── TRUST BAR ───────────────────────────────────────── */
+    .trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .trust-icon {
+      width: 14px;
+      height: 14px;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .calc-card { padding: 28px 20px 24px; }
+      .results-breakdown { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
+  </a>
+  <ul class="nav-links">
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="book-link">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- ─── CALCULATOR ────────────────────────────────────────── -->
+<div class="calc-page">
+
+  <div class="calc-header">
+    <div class="calc-badge">
+      <span class="calc-badge-dot"></span>
+      Free Calculator
+    </div>
+    <h1>DM Revenue Leak Calculator</h1>
+    <p>Find out exactly how much revenue you're leaving on the table from slow Instagram &amp; Facebook DM response times.</p>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-section-label">Your Numbers</div>
+
+    <form id="calc-form" onsubmit="calculateLeak(event)">
+
+      <div class="form-group">
+        <label for="dms-per-week">DMs per week <span class="required">*</span></label>
+        <select id="dms-per-week" required>
+          <option value="" disabled selected></option>
+          <option value="7">1 – 10</option>
+          <option value="18">11 – 25</option>
+          <option value="38">26 – 50</option>
+          <option value="75">51 – 100</option>
+          <option value="150">101 – 200</option>
+          <option value="300">200+</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="avg-value">Average Service Value ($) <span class="required">*</span></label>
+        <input type="number" id="avg-value" min="1" placeholder="e.g. 500" required>
+      </div>
+
+      <div class="form-group">
+        <label for="response-time">Current Average Response Time <span class="required">*</span></label>
+        <select id="response-time" required>
+          <option value="" disabled selected></option>
+          <option value="0.05">Instant (under 5 min)</option>
+          <option value="0.15">Under 1 hour</option>
+          <option value="0.30">1 – 4 hours</option>
+          <option value="0.50">4 – 12 hours</option>
+          <option value="0.65">12 – 24 hours</option>
+          <option value="0.78">24+ hours</option>
+        </select>
+      </div>
+
+      <hr class="form-divider">
+
+      <div class="form-group">
+        <label for="email">Email <span class="label-optional">(optional – to receive your full analysis)</span></label>
+        <input type="email" id="email" placeholder="you@yourbusiness.com">
+      </div>
+
+      <button type="submit" class="calc-btn">Calculate My Revenue Leak</button>
+    </form>
+
+    <!-- Results -->
+    <div class="results" id="results">
+      <hr class="results-divider">
+
+      <div class="results-top">
+        <div class="results-label">Estimated Annual Revenue Leak</div>
+        <div class="results-amount" id="result-annual">$0</div>
+        <div class="results-period">per year in lost bookings</div>
+      </div>
+
+      <div class="results-breakdown">
+        <div class="breakdown-item">
+          <div class="b-label">Weekly Leak</div>
+          <div class="b-value" id="result-weekly">$0</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="b-label">Monthly Leak</div>
+          <div class="b-value" id="result-monthly">$0</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="b-label">Lost Leads / Wk</div>
+          <div class="b-value" id="result-leads">0</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="b-label">Response Drop-Off</div>
+          <div class="b-value" id="result-dropoff">0%</div>
+        </div>
+      </div>
+
+      <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="results-cta">
+        Fix This With InboxRoute
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <p class="results-note">Based on a 20% inbound DM-to-booking conversion rate for service businesses and response-time drop-off data. Actual results vary.</p>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <span class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      No data stored
+    </span>
+    <span class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Results in seconds
+    </span>
+    <span class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="1"/></svg>
+      100% free
+    </span>
+  </div>
+
+</div>
+
+<div id="site-footer"></div>
+<script>
+  (function(){
+    fetch('footer.html')
+      .then(function(r){ return r.text(); })
+      .then(function(html){ document.getElementById('site-footer').innerHTML = html; })
+      .catch(function(){});
+  })();
+</script>
+
+<script>
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function calculateLeak(e) {
+    e.preventDefault();
+
+    var dms      = parseFloat(document.getElementById('dms-per-week').value);
+    var avgValue = parseFloat(document.getElementById('avg-value').value);
+    var lossRate = parseFloat(document.getElementById('response-time').value);
+    var baseConv = 0.20;
+
+    var weeklyLeak  = dms * avgValue * baseConv * lossRate;
+    var monthlyLeak = weeklyLeak * 4.33;
+    var annualLeak  = weeklyLeak * 52;
+    var lostLeads   = Math.round(dms * lossRate * baseConv * 10) / 10;
+
+    document.getElementById('result-annual').textContent  = fmt(annualLeak);
+    document.getElementById('result-weekly').textContent  = fmt(weeklyLeak);
+    document.getElementById('result-monthly').textContent = fmt(monthlyLeak);
+    document.getElementById('result-leads').textContent   = lostLeads + '/wk';
+    document.getElementById('result-dropoff').textContent = Math.round(lossRate * 100) + '%';
+
+    var results = document.getElementById('results');
+    results.classList.add('visible');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        results.classList.add('animate');
+        results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

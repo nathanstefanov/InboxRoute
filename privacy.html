@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy – InboxRoute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: #1a1a2e; }
+
+    /* ─── LEGAL PAGE ──────────────────────────────────────── */
+    :root {
+      --ir-text: #0f172a;
+      --ir-muted: #475569;
+      --ir-border: #e2e8f0;
+      --ir-bg: #ffffff;
+      --ir-link: #2563eb;
+    }
+
+    .ir-legal {
+      background: var(--ir-bg);
+      color: var(--ir-text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 48px 5% 64px;
+      margin: 0;
+      width: 100%;
+    }
+
+    .ir-legal__container {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .ir-legal__header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .ir-legal__title {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.1;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      color: #1a1a2e;
+    }
+
+    .ir-legal__meta {
+      margin: 0 0 16px 0;
+      color: var(--ir-muted);
+      font-size: 14px;
+    }
+
+    .ir-legal__intro {
+      margin: 0 0 10px 0;
+      color: var(--ir-text);
+      font-size: clamp(14px, 2vw, 16px);
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .ir-legal__card {
+      border: 1px solid var(--ir-border);
+      border-radius: 16px;
+      background: #fff;
+      padding: 16px 24px 24px;
+      margin: 24px 0 0 0;
+    }
+
+    .ir-legal__body {
+      border-top: 1px solid var(--ir-border);
+      padding-top: 20px;
+    }
+
+    .ir-legal__section {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--ir-border);
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    .ir-legal__section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .ir-legal__section h2 {
+      font-size: clamp(17px, 3vw, 20px);
+      margin: 0 0 10px 0;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .ir-legal__section h3 {
+      font-size: clamp(14px, 2.5vw, 15px);
+      margin: 14px 0 6px 0;
+      font-weight: 600;
+      color: var(--ir-text);
+    }
+
+    .ir-legal__section p {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #334155;
+    }
+
+    .ir-legal__section p:last-child { margin-bottom: 0; }
+
+    .ir-legal__section ul {
+      margin: 0 0 12px 0;
+      padding-left: 20px;
+    }
+
+    .ir-legal__section ul:last-child { margin-bottom: 0; }
+
+    .ir-legal__section li {
+      margin: 5px 0;
+      color: #334155;
+      font-size: 14px;
+    }
+
+    .ir-legal__footer {
+      margin: 32px 0 0 0;
+      padding: 20px 0 0 0;
+      border-top: 1px solid var(--ir-border);
+      color: var(--ir-muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .ir-legal a { color: var(--ir-link); text-decoration: none; }
+    .ir-legal a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .ir-legal { padding: 32px 4% 48px; }
+      .ir-legal__card { padding: 12px 14px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<!-- ─── PRIVACY POLICY ───────────────────────────────────── -->
+<section class="ir-legal">
+  <div class="ir-legal__container">
+
+    <header class="ir-legal__header">
+      <h1 class="ir-legal__title">Privacy Policy</h1>
+      <p class="ir-legal__meta"><strong>Last Updated:</strong> January 16, 2026</p>
+      <p class="ir-legal__intro">This Privacy Policy describes how InboxRoute ("InboxRoute," "we," "us," or "our") collects, uses, discloses, and protects information when you access or use our website, services, software, automations, and related tools (collectively, the "Service").</p>
+      <p class="ir-legal__intro">By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy. If you do not agree, you must not access or use the Service.</p>
+      <p class="ir-legal__intro">InboxRoute is operated from the State of Illinois, United States.</p>
+    </header>
+
+    <div class="ir-legal__card">
+      <article class="ir-legal__body">
+
+        <section class="ir-legal__section">
+          <h2>1. INFORMATION WE COLLECT</h2>
+          <p>We collect several types of information to provide and improve our Service:</p>
+          <h3>(a) Information You Provide Directly</h3>
+          <ul>
+            <li>Account registration information (name, email address, business name, phone number, company details)</li>
+            <li>Social media account credentials, access tokens, and profile information (Instagram, Facebook)</li>
+            <li>Payment and billing information (credit card details are processed and stored by third-party payment processors only)</li>
+            <li>Communications with us (support requests, feedback, inquiries, complaints)</li>
+            <li>Lead data, customer messages, and conversation history processed through your connected social media accounts</li>
+            <li>Any other information you choose to provide</li>
+          </ul>
+          <h3>(b) Information Collected Automatically</h3>
+          <ul>
+            <li>Device information (IP address, browser type and version, device type, operating system, screen resolution)</li>
+            <li>Usage data (pages visited, features accessed, time spent on pages, click patterns, navigation paths, session duration)</li>
+            <li>Log data (access times, error logs, referral URLs, exit pages)</li>
+            <li>Location data (general geographic location inferred from IP address)</li>
+            <li>Performance data (load times, response times, error rates)</li>
+          </ul>
+          <h3>(c) Cookies and Tracking Technologies</h3>
+          <ul>
+            <li>Session cookies (required for Service functionality)</li>
+            <li>Persistent cookies (for preferences and analytics)</li>
+            <li>Local storage (for temporary data storage)</li>
+            <li>Web beacons and pixels (for analytics and tracking)</li>
+            <li>Similar tracking technologies</li>
+          </ul>
+          <h3>(d) Information from Third Parties</h3>
+          <ul>
+            <li>Data from connected social media platforms (Instagram, Facebook) including profile information, message content, follower data, engagement metrics, and API access logs</li>
+            <li>Information from payment processors regarding transaction status and billing</li>
+            <li>Data from analytics providers and service infrastructure</li>
+            <li>Information from your email provider if you contact us</li>
+            <li>Publicly available information about your business</li>
+          </ul>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>2. HOW WE USE YOUR INFORMATION</h2>
+          <p>We use collected information for the following purposes:</p>
+          <h3>Service Provision &amp; Performance</h3>
+          <ul>
+            <li>To provide, operate, maintain, and deliver the Service</li>
+            <li>To process, route, and respond to messages on your behalf</li>
+            <li>To configure, customize, and optimize automation workflows</li>
+            <li>To manage your account, subscription, and billing</li>
+            <li>To authenticate your identity and prevent unauthorized access</li>
+            <li>To connect and integrate with third-party platforms</li>
+            <li>To store and process lead data as directed by you</li>
+          </ul>
+          <h3>Communication &amp; Support</h3>
+          <ul>
+            <li>To send transactional messages (confirmations, receipts, invoices)</li>
+            <li>To send service-related notifications and updates</li>
+            <li>To respond to your requests and provide customer support</li>
+            <li>To send administrative information (billing notices, account changes, security alerts, Terms or Privacy Policy updates)</li>
+            <li>To communicate about new features, updates, or Service changes</li>
+          </ul>
+          <h3>Marketing (With Consent Where Required)</h3>
+          <ul>
+            <li>To send promotional materials and offers (you may opt out at any time)</li>
+            <li>To conduct surveys and request feedback</li>
+            <li>To inform you of related services or features</li>
+          </ul>
+          <h3>Improvement, Analytics &amp; Research</h3>
+          <ul>
+            <li>To analyze usage patterns, trends, and behaviors</li>
+            <li>To improve Service performance, features, and functionality</li>
+            <li>To develop new products, services, and features</li>
+            <li>To troubleshoot technical issues and bugs</li>
+            <li>To conduct internal research and testing</li>
+            <li>To optimize user experience</li>
+          </ul>
+          <h3>Legal, Security &amp; Compliance</h3>
+          <ul>
+            <li>To enforce our Terms of Service and other policies</li>
+            <li>To comply with legal obligations, court orders, and regulatory requirements</li>
+            <li>To protect against fraud, abuse, spam, or security threats</li>
+            <li>To investigate and prevent violations of our policies</li>
+            <li>To resolve disputes and enforce our agreements</li>
+            <li>To protect our rights, property, safety, and the rights of our users</li>
+            <li>To respond to lawful requests from public authorities</li>
+            <li>To establish, exercise, or defend legal claims</li>
+          </ul>
+          <h3>Aggregated &amp; Anonymized Data</h3>
+          <ul>
+            <li>To create aggregated, de-identified, or anonymized data that does not identify you personally</li>
+            <li>Such data may be used for any lawful business purpose without restriction</li>
+          </ul>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>3. HOW WE SHARE YOUR INFORMATION</h2>
+          <p>We do not sell, rent, or lease your personal information to third parties for their marketing purposes.</p>
+          <h3>(a) Service Providers &amp; Subprocessors</h3>
+          <p>We share information with third-party service providers who perform services on our behalf under contractual obligations to protect your information:</p>
+          <ul>
+            <li>Payment processors (Stripe and other payment gateways)</li>
+            <li>Messaging automation platforms (ManyChat and similar services)</li>
+            <li>Cloud hosting and infrastructure providers (AWS, Google Cloud, or similar)</li>
+            <li>Email service providers</li>
+            <li>Customer relationship management (CRM) tools</li>
+            <li>Analytics and monitoring services (Google Analytics and similar)</li>
+            <li>Customer support and ticketing platforms</li>
+            <li>Security and fraud prevention services</li>
+            <li>Marketing and communication tools</li>
+            <li>Database and data storage providers</li>
+            <li>Content delivery networks (CDNs)</li>
+          </ul>
+          <p>These providers are contractually required to use information only for specified purposes, implement appropriate security measures, comply with applicable data protection laws, and not use information for their own purposes.</p>
+          <h3>(b) Social Media Platforms</h3>
+          <p>When you connect your Instagram, Facebook, or other social media accounts:</p>
+          <ul>
+            <li>We access and process data through those platforms' APIs</li>
+            <li>We share information necessary to provide messaging automation services</li>
+            <li>Platform providers may receive data about Service usage</li>
+            <li>Such sharing is governed by the platforms' terms and privacy policies</li>
+          </ul>
+          <p>You are responsible for reviewing and complying with third-party platform policies.</p>
+          <h3>(c) Legal Requirements &amp; Protection of Rights</h3>
+          <p>We may disclose information if required or permitted by law, including to comply with legal obligations, respond to lawful requests from public authorities, enforce our Terms of Service, protect our rights and safety, and establish or defend legal claims.</p>
+          <h3>(d) Business Transfers &amp; Corporate Transactions</h3>
+          <p>In the event of a merger, acquisition, consolidation, restructuring, sale of assets, bankruptcy, or other corporate transaction, your information may be transferred to the acquiring or successor entity. You will be notified of any change in ownership or control.</p>
+          <h3>(e) With Your Consent or Direction</h3>
+          <p>We may share information with third parties when you provide explicit consent or direct us to share information.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>4. DATA RETENTION</h2>
+          <p>We retain your information for as long as necessary to fulfill the purposes outlined in this Privacy Policy and as required by law.</p>
+          <h3>Account &amp; Profile Data</h3>
+          <p>Retained for the duration of your active subscription and up to 90 days after cancellation. May be retained longer to comply with legal obligations, resolve disputes, or enforce agreements.</p>
+          <h3>Lead Data &amp; Message Content</h3>
+          <p>Processed in real-time for automation purposes. May be stored temporarily for operational and quality assurance purposes. You are responsible for independently managing and retaining your own lead data.</p>
+          <h3>Financial &amp; Transaction Data</h3>
+          <p>Retained for accounting, tax, and regulatory compliance purposes for up to 7 years.</p>
+          <h3>Upon Account Deletion or Termination</h3>
+          <p>We will delete or anonymize your information within 90 days unless retention is required by law or to resolve disputes. You may request deletion at any time by contacting <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a>.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>5. DATA SECURITY</h2>
+          <p>We implement commercially reasonable administrative, technical, and physical security measures designed to protect your information from unauthorized access, disclosure, alteration, or destruction.</p>
+          <h3>Technical Measures</h3>
+          <ul>
+            <li>Encryption of data in transit using TLS/SSL protocols</li>
+            <li>Encryption of sensitive data at rest</li>
+            <li>Secure authentication mechanisms and multi-factor authentication options</li>
+            <li>Regular security assessments and penetration testing</li>
+            <li>Intrusion detection and prevention systems</li>
+            <li>Firewall protection and network segmentation</li>
+          </ul>
+          <h3>Limitations</h3>
+          <p>No method of transmission over the Internet is 100% secure. We cannot guarantee absolute security of your information. You are responsible for maintaining the confidentiality of your account credentials and promptly notifying us of any unauthorized access.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>6. YOUR RIGHTS AND CHOICES</h2>
+          <p>Depending on your location and applicable law, you may have certain rights regarding your personal information.</p>
+          <h3>Access, Correction &amp; Deletion</h3>
+          <p>You may request access to, correction of, or deletion of your personal information by contacting <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a>. We will respond within 30 days.</p>
+          <h3>Data Portability</h3>
+          <p>You may request a copy of your personal information in a portable machine-readable format.</p>
+          <h3>Opt-Out</h3>
+          <p>You may opt out of marketing emails at any time by clicking "unsubscribe" in any email or contacting us. We will not discriminate against you for exercising your privacy rights.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>7. COOKIES AND TRACKING TECHNOLOGIES</h2>
+          <p>We and our third-party partners use cookies, web beacons, pixels, local storage, and similar tracking technologies to collect information about your use of the Service.</p>
+          <h3>Types of Cookies</h3>
+          <ul>
+            <li><strong>Essential Cookies:</strong> Required for Service functionality (authentication, session management, security). Cannot be disabled without impacting the Service.</li>
+            <li><strong>Analytics Cookies:</strong> Used to understand how you use the Service (page views, navigation, feature usage, error tracking).</li>
+            <li><strong>Functionality Cookies:</strong> Enable enhanced features and remember your preferences.</li>
+            <li><strong>Marketing Cookies:</strong> Used for advertising purposes, if applicable.</li>
+          </ul>
+          <h3>Your Choices</h3>
+          <p>You can control cookies through your browser settings. Disabling cookies may limit Service functionality. Google Analytics opt-out is available at <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">https://tools.google.com/dlpage/gaoptout</a>. We do not currently respond to Do Not Track (DNT) browser signals.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>8. THIRD-PARTY LINKS, SERVICES &amp; INTEGRATIONS</h2>
+          <p>The Service may contain links to or integrate with third-party websites, platforms, or applications. We are not responsible for the privacy practices of third-party services. When you connect third-party accounts (Instagram, Facebook, Stripe, etc.), those platforms' privacy policies apply to information they collect and process.</p>
+          <p>We encourage you to review the privacy policies of all third-party services you interact with.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>9. CHILDREN'S PRIVACY</h2>
+          <p>The Service is not intended for individuals under the age of 18. We do not knowingly collect personal information from children under 18. If you believe we have collected information from a child under 18, contact us immediately at <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a> and we will promptly delete such information.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>10. INTERNATIONAL DATA TRANSFERS</h2>
+          <p>InboxRoute operates from the United States (Illinois). Your information may be transferred to, stored in, and processed in the United States and other countries where our service providers operate. These countries may have data protection laws that differ from the laws of your country of residence.</p>
+          <p>By using the Service, you acknowledge and consent to the transfer and processing of your information as described in this Privacy Policy. Contact <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a> for information about safeguards for international transfers.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>11. CALIFORNIA PRIVACY RIGHTS (CCPA/CPRA)</h2>
+          <p>If you are a California resident, you have specific rights under the CCPA and CPRA including the right to know, the right to delete, the right to correct, and the right to opt out of sale of personal information. We do not sell personal information.</p>
+          <p>To exercise your rights, email <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a>. We will respond within 45 days.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>12. EUROPEAN PRIVACY RIGHTS (GDPR)</h2>
+          <p>If you are located in the EEA, UK, or Switzerland, you have rights under the GDPR including rights of access, rectification, erasure, restriction, data portability, objection, and the right to lodge a complaint with your supervisory authority.</p>
+          <p>We process personal data based on contractual necessity, legitimate interests, legal obligations, and consent (where required). To exercise your GDPR rights, contact <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a>. We will respond within 30 days.</p>
+          <p>EU Supervisory Authorities: <a href="https://edpb.europa.eu/about-edpb/board/members_en" target="_blank" rel="noopener noreferrer">https://edpb.europa.eu</a> | UK ICO: <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">https://ico.org.uk</a></p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>13. OTHER STATE PRIVACY RIGHTS</h2>
+          <p>Residents of Virginia (VCDPA), Colorado (CPA), Connecticut (CTDPA), Utah (UCPA), and other states with comprehensive privacy laws may have additional rights including rights to access, correct, delete, obtain a copy of personal data, and opt out of targeted advertising and sale of personal data.</p>
+          <p>To exercise your rights, contact <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a>. We will respond within 45 days and will not discriminate against you for exercising your rights.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>14. NEVADA PRIVACY RIGHTS</h2>
+          <p>Nevada residents have the right to opt out of the sale of certain covered information. We do not sell covered information as defined under Nevada law. Nevada residents may submit opt-out requests to <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a> with "Nevada Do Not Sell Request" in the subject line.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>15. ADVERTISING &amp; MARKETING COMMUNICATIONS</h2>
+          <p>We may send you promotional emails about new features, special offers, and events. You may opt out at any time by clicking "unsubscribe" in any marketing email or contacting <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a>. Opting out does not affect transactional or administrative emails.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>16. AUTOMATED DECISION-MAKING &amp; PROFILING</h2>
+          <p>We do not currently engage in automated decision-making or profiling that produces legal or similarly significant effects without human involvement. If we implement such features in the future, we will notify you and provide appropriate safeguards.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>17. SENSITIVE PERSONAL INFORMATION</h2>
+          <p>We do not intentionally collect, process, or store sensitive personal information including precise geolocation data, genetic or biometric data, health information, government-issued identification numbers, or information about racial or ethnic origin, religious beliefs, or sexual orientation. If you inadvertently provide such information, contact <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a> immediately.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>18. DATA BREACH NOTIFICATION</h2>
+          <p>In the event of a data breach affecting your personal information, we will notify you and applicable regulatory authorities as required by law, without undue delay and where feasible within 72 hours of becoming aware of the breach. Notifications will be sent via email and/or prominent notice on our website.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>19. CHANGES TO THIS PRIVACY POLICY</h2>
+          <p>We may update this Privacy Policy from time to time. When we make changes, we will update the "Last Updated" date, notify you via email (if applicable), and post notice on our website. For material changes, we may require your affirmative consent. Continued use of the Service after changes take effect constitutes acceptance of the updated Privacy Policy.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>20. CONTACT US</h2>
+          <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, contact us:</p>
+          <p><strong>InboxRoute</strong><br>
+          Email: <a href="mailto:contact@inboxroute.net">contact@inboxroute.net</a></p>
+          <p>We will respond to inquiries within 30 days. You also have the right to file a complaint with your local data protection authority or supervisory authority.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>21. INTERPRETATION &amp; SEVERABILITY</h2>
+          <p>If any provision of this Privacy Policy is found to be invalid or unenforceable, the remaining provisions will remain in full force and effect. This Privacy Policy, together with our Terms of Service, constitutes the entire agreement between you and InboxRoute regarding the subject matter herein. This policy is written in English; in the event of conflicts between the English version and any translation, the English version prevails.</p>
+        </section>
+
+        <section class="ir-legal__section">
+          <h2>22. ADDITIONAL DISCLOSURES</h2>
+          <p>Certain features or services may have additional privacy practices. When you use third-party integrations (Instagram, Facebook, Stripe, ManyChat, etc.), those services' privacy policies apply to information they collect. You are responsible for ensuring that information you provide is accurate and up-to-date.</p>
+          <p>By using the Service, you consent to data transfers and processing across multiple systems and jurisdictions as necessary for service provision. This Privacy Policy does not create any contractual rights beyond those stated in our Terms of Service.</p>
+        </section>
+
+      </article>
+    </div>
+
+    <footer class="ir-legal__footer">
+      <p><strong>End of Privacy Policy</strong></p>
+      <p>© <span id="ir-year">2026</span> InboxRoute. All rights reserved.</p>
+    </footer>
+
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script>
+  (function(){
+    fetch('footer.html')
+      .then(function(r){ return r.text(); })
+      .then(function(html){ document.getElementById('site-footer').innerHTML = html; })
+      .catch(function(){});
+  })();
+</script>
+
+<script>
+  try {
+    var y = document.getElementById('ir-year');
+    if (y) y.textContent = String(new Date().getFullYear());
+  } catch(e) {}
+</script>
+</body>
+</html>
