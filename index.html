@@ -1230,12 +1230,12 @@
 
     @media (max-width: 600px) {
       section {
-        padding: 72px 5%;
+        padding: 60px 5%;
       }
 
       .hero {
         min-height: 0;
-        padding: 72px 5%;
+        padding: 60px 5%;
         gap: 20px;
       }
 
@@ -1264,6 +1264,7 @@
       .then(function(r){ return r.text(); })
       .then(function(html){
         document.getElementById('site-nav').innerHTML = html;
+        document.querySelectorAll('.nav-home-link').forEach(function(el){ el.style.display = 'none'; });
         var btn = document.getElementById('hamburger-btn');
         if (btn) btn.addEventListener('click', function(){
           document.getElementById('mobile-menu').classList.toggle('open');
