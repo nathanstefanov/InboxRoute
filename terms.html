@@ -205,12 +205,20 @@
         document.getElementById('site-nav').innerHTML = html;
         var btn = document.getElementById('hamburger-btn');
         if (btn) btn.addEventListener('click', function(){
-          document.getElementById('mobile-menu').classList.toggle('open');
+          var open = document.getElementById('mobile-menu').classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(function(a){
+          a.addEventListener('click', function(){
+            document.getElementById('mobile-menu').classList.remove('open');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          });
         });
         document.addEventListener('click', function(e){
           if (!e.target.closest('nav') && !e.target.closest('#mobile-menu')) {
             var m = document.getElementById('mobile-menu');
             if (m) m.classList.remove('open');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
           }
         });
       })

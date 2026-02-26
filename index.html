@@ -974,7 +974,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      transition: all 0.3s ease;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     .price-period {
@@ -1367,12 +1367,20 @@
         document.querySelectorAll('.nav-home-link').forEach(function(el){ el.style.display = 'none'; });
         var btn = document.getElementById('hamburger-btn');
         if (btn) btn.addEventListener('click', function(){
-          document.getElementById('mobile-menu').classList.toggle('open');
+          var open = document.getElementById('mobile-menu').classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(function(a){
+          a.addEventListener('click', function(){
+            document.getElementById('mobile-menu').classList.remove('open');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          });
         });
         document.addEventListener('click', function(e){
           if (!e.target.closest('nav') && !e.target.closest('#mobile-menu')) {
             var m = document.getElementById('mobile-menu');
             if (m) m.classList.remove('open');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
           }
         });
       })
@@ -1558,7 +1566,6 @@
 
       </div>
     </div>
-  </div>
   </div>
 </section>
 
@@ -1866,10 +1873,6 @@
     });
   });
 
-  // Transition for price-amount
-  document.querySelectorAll('.price-amount').forEach(el => {
-    el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-  });
 </script>
 </body>
 </html>
