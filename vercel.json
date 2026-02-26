@@ -2,21 +2,21 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/home",             "destination": "/",              "permanent": true },
-    { "source": "/index",            "destination": "/",              "permanent": true },
-    { "source": "/index.html",       "destination": "/",              "permanent": true },
+    { "source": "/index",                   "destination": "/",                                                      "permanent": true },
+    { "source": "/index.html",              "destination": "/",                                                      "permanent": true },
+    { "source": "/home",                    "destination": "/",                                                      "permanent": true },
+    { "source": "/blank",                   "destination": "/",                                                      "permanent": true },
+    { "source": "/thank-you-for-subscribing","destination": "/",                                                     "permanent": true },
+    { "source": "/email",                   "destination": "/",                                                      "permanent": true },
+    { "source": "/pricing",                 "destination": "/#pricing",                                              "permanent": true },
 
-    { "source": "/about-us",         "destination": "/about",         "permanent": true },
-    { "source": "/about-1",          "destination": "/about",         "permanent": true },
+    { "source": "/sol",                     "destination": "/solutions",                                             "permanent": true },
 
-    { "source": "/our-solutions",    "destination": "/solutions",     "permanent": true },
-    { "source": "/services",         "destination": "/solutions",     "permanent": true },
+    { "source": "/dm-revenue-calculator",   "destination": "/calculator",                                            "permanent": true },
 
-    { "source": "/roi-calculator",   "destination": "/calculator",    "permanent": true },
-    { "source": "/revenue-calculator","destination": "/calculator",   "permanent": true },
+    { "source": "/client-intake",           "destination": "https://calendly.com/inboxroute-ai/30min",              "permanent": true },
 
-    { "source": "/privacy-policy",   "destination": "/privacy",       "permanent": true },
-    { "source": "/terms-of-service", "destination": "/terms",         "permanent": true },
-    { "source": "/terms-and-conditions","destination": "/terms",      "permanent": true }
+    { "source": "/privacy-policy",          "destination": "/privacy",                                               "permanent": true },
+    { "source": "/terms-of-service",        "destination": "/terms",                                                 "permanent": true }
   ]
 }

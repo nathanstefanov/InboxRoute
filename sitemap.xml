@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://inboxroute.ai/</loc>
+    <loc>https://www.inboxroute.net/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://inboxroute.ai/solutions</loc>
+    <loc>https://www.inboxroute.net/solutions</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://inboxroute.ai/about</loc>
+    <loc>https://www.inboxroute.net/about</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://inboxroute.ai/calculator</loc>
+    <loc>https://www.inboxroute.net/calculator</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://inboxroute.ai/privacy</loc>
+    <loc>https://www.inboxroute.net/privacy</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://inboxroute.ai/terms</loc>
+    <loc>https://www.inboxroute.net/terms</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

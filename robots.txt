@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://inboxroute.ai/sitemap.xml
+Sitemap: https://www.inboxroute.net/sitemap.xml
