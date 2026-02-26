@@ -477,6 +477,175 @@
       font-weight: 700;
     }
 
+    /* ─── MOBILE CHAT VIEW ────────────────────────────────── */
+    .mobile-chat-view {
+      display: none;
+      width: 100%;
+      background: white;
+      border-radius: 24px;
+      border: 1px solid #ebebeb;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+
+    .mobile-chat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .mobile-chat-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .mobile-chat-avatar-wrap img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mobile-chat-online {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      background: #00c853;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .mobile-chat-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .mobile-chat-status {
+      font-size: 11px;
+      color: #888;
+      margin-top: 1px;
+    }
+
+    .mobile-chat-messages {
+      padding: 14px 14px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-bubble {
+      max-width: 78%;
+      padding: 9px 13px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .mobile-bubble-out {
+      background: #0084ff;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .mobile-bubble-in {
+      background: #f0f0f0;
+      color: #1a1a2e;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .mobile-option-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-self: flex-start;
+    }
+
+    .mobile-option-chip {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 7px 13px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #1a1a2e;
+    }
+
+    .mobile-booking-result {
+      margin: 4px 14px 14px;
+      background: #f8f9ff;
+      border: 1px solid #e0eaff;
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .mobile-booking-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .mobile-booking-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .mobile-booking-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .mobile-booking-time {
+      font-size: 11px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    .mobile-booking-confirmed {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .mobile-mini-cal {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 3px;
+      text-align: center;
+    }
+
+    .mobile-mini-cal span {
+      font-size: 9px;
+      padding: 3px 2px;
+      color: #ccc;
+      border-radius: 4px;
+    }
+
+    .mobile-mini-cal span.cal-active {
+      background: #0084ff;
+      color: white;
+      font-weight: 700;
+    }
+
     /* ─── SECTIONS ────────────────────────────────────────── */
     section {
       padding: 100px 5%;
@@ -1081,58 +1250,18 @@
         gap: 20px;
       }
 
-      .hero-section {
-        padding-bottom: 0;
-      }
-
-      .hero-visual {
-        gap: 8px;
-        align-items: center;
-      }
-
-      .phone-wrap {
-        zoom: 0.58;
-        margin-bottom: 0;
-        flex-shrink: 0;
-      }
-
-      .phone-chat {
-        min-height: 0;
-        max-height: 170px;
-        overflow: hidden;
-      }
-
+      .phone-wrap,
       .float-card {
-        position: relative;
-        left: auto;
-        top: auto;
-        bottom: auto;
-        right: auto;
-        margin: 0;
-        width: 185px;
-        flex-shrink: 0;
+        display: none;
+      }
+
+      .mobile-chat-view {
+        display: block;
       }
 
       .billing-toggle {
         flex-wrap: wrap;
         gap: 12px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .phone-wrap {
-        zoom: 0.72;
-        margin-bottom: 0;
-      }
-
-      .phone-chat {
-        min-height: 330px;
-        max-height: none;
-        overflow: visible;
-      }
-
-      .float-card {
-        display: none;
       }
     }
   </style>
@@ -1269,6 +1398,51 @@
           <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
           <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
           <span>8</span><span>9</span><span>10</span><span class="active">11</span><span>12</span><span>13</span><span>14</span>
+        </div>
+      </div>
+
+      <!-- Mobile-only chat view (replaces phone mockup on small screens) -->
+      <div class="mobile-chat-view">
+        <div class="mobile-chat-header">
+          <div class="mobile-chat-avatar-wrap">
+            <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
+            <div class="mobile-chat-online"></div>
+          </div>
+          <div>
+            <div class="mobile-chat-name">InboxRoute</div>
+            <div class="mobile-chat-status">Active now</div>
+          </div>
+        </div>
+        <div class="mobile-chat-messages">
+          <div class="mobile-bubble mobile-bubble-out">Do you have pricing info?</div>
+          <div class="mobile-bubble mobile-bubble-in">Yes, we do! We have three plans available.</div>
+          <div class="mobile-option-chips">
+            <div class="mobile-option-chip">Starter – $199/mo</div>
+            <div class="mobile-option-chip">Standard – $299/mo</div>
+            <div class="mobile-option-chip">Pro – $499/mo</div>
+          </div>
+          <div class="mobile-bubble mobile-bubble-out">Standard works for us — how do I get started?</div>
+          <div class="mobile-bubble mobile-bubble-in">Awesome! I'll book a demo call for you to get started.</div>
+        </div>
+        <div class="mobile-booking-result">
+          <div class="mobile-booking-row">
+            <div class="mobile-booking-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
+                <path d="M8 2V6M16 2V6M3 10H21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="mobile-booking-title">Meet with InboxRoute</div>
+              <div class="mobile-booking-time">Tomorrow at 11:00 AM</div>
+            </div>
+          </div>
+          <div class="mobile-booking-confirmed">Confirmed</div>
+          <div class="mobile-mini-cal">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+            <span>8</span><span>9</span><span>10</span><span class="cal-active">11</span><span>12</span><span>13</span><span>14</span>
+          </div>
         </div>
       </div>
     </div>
