@@ -533,28 +533,28 @@
     .mobile-flow {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 20px;
+      position: relative;
+    }
+
+    /* Single connector line from centre of icon 1 to centre of icon 3 */
+    .mobile-flow::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: rgba(255,255,255,0.12);
+      z-index: 0;
     }
 
     .mobile-flow-step {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 16px;
       position: relative;
-    }
-
-    .mobile-flow-step:not(:last-child) {
-      margin-bottom: 20px;
-    }
-
-    .mobile-flow-step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 19px;
-      top: 40px;
-      width: 2px;
-      height: 20px;
-      background: rgba(255,255,255,0.12);
+      z-index: 1;
     }
 
     .mobile-flow-icon-wrap {
@@ -582,8 +582,7 @@
     .mobile-flow-label {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      min-height: 40px;
+      gap: 3px;
     }
 
     .mobile-flow-title {
