@@ -477,173 +477,152 @@
       font-weight: 700;
     }
 
-    /* ─── MOBILE CHAT VIEW ────────────────────────────────── */
+    /* ─── MOBILE HERO VISUAL ───────────────────────────────── */
     .mobile-chat-view {
       display: none;
       width: 100%;
-      background: white;
-      border-radius: 24px;
-      border: 1px solid #ebebeb;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.10);
+    }
+
+    .mobile-hero-card {
+      background: linear-gradient(145deg, #0f1729 0%, #1a2a50 100%);
+      border-radius: 28px;
+      padding: 28px 24px 24px;
+      margin-bottom: 14px;
+      position: relative;
       overflow: hidden;
     }
 
-    .mobile-chat-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .mobile-chat-avatar-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .mobile-chat-avatar-wrap img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .mobile-chat-online {
+    .mobile-hero-card::before {
+      content: '';
       position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 10px;
-      height: 10px;
+      top: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(0,132,255,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .mobile-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,200,83,0.15);
+      border: 1px solid rgba(0,200,83,0.3);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #00c853;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+
+    .mobile-live-dot {
+      width: 7px;
+      height: 7px;
       background: #00c853;
       border-radius: 50%;
-      border: 2px solid white;
+      animation: pulse-dot 2s ease-in-out infinite;
     }
 
-    .mobile-chat-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: #1a1a2e;
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    .mobile-chat-status {
-      font-size: 11px;
-      color: #888;
-      margin-top: 1px;
-    }
-
-    .mobile-chat-messages {
-      padding: 14px 14px 10px;
+    .mobile-flow {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 0;
     }
 
-    .mobile-bubble {
-      max-width: 78%;
-      padding: 9px 13px;
-      border-radius: 18px;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    .mobile-bubble-out {
-      background: #0084ff;
-      color: white;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-
-    .mobile-bubble-in {
-      background: #f0f0f0;
-      color: #1a1a2e;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-
-    .mobile-option-chips {
+    .mobile-flow-step {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-self: flex-start;
+      align-items: flex-start;
+      gap: 14px;
+      position: relative;
     }
 
-    .mobile-option-chip {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 7px 13px;
-      font-size: 12px;
-      font-weight: 500;
-      color: #1a1a2e;
+    .mobile-flow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      width: 2px;
+      height: 28px;
+      background: rgba(255,255,255,0.12);
     }
 
-    .mobile-booking-result {
-      margin: 4px 14px 14px;
-      background: #f8f9ff;
-      border: 1px solid #e0eaff;
-      border-radius: 16px;
-      padding: 14px 16px;
-    }
-
-    .mobile-booking-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .mobile-booking-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, #0084ff, #00c6ff);
-      border-radius: 10px;
+    .mobile-flow-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      margin-bottom: 28px;
     }
 
-    .mobile-booking-title {
-      font-size: 13px;
+    .mobile-flow-icon-wrap.step-dm {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .mobile-flow-icon-wrap.step-ai {
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+    }
+
+    .mobile-flow-icon-wrap.step-booked {
+      background: linear-gradient(135deg, #00c853, #00e676);
+    }
+
+    .mobile-flow-label {
+      padding-top: 8px;
+    }
+
+    .mobile-flow-title {
+      font-size: 14px;
       font-weight: 700;
-      color: #1a1a2e;
+      color: #fff;
+      margin-bottom: 3px;
     }
 
-    .mobile-booking-time {
-      font-size: 11px;
-      color: #888;
-      margin-top: 2px;
+    .mobile-flow-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
     }
 
-    .mobile-booking-confirmed {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #888;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .mobile-mini-cal {
+    .mobile-stats-row {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 3px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mobile-stat-card {
+      background: white;
+      border-radius: 18px;
+      padding: 16px 12px;
       text-align: center;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
 
-    .mobile-mini-cal span {
-      font-size: 9px;
-      padding: 3px 2px;
-      color: #ccc;
-      border-radius: 4px;
+    .mobile-stat-number {
+      font-size: 22px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 4px;
     }
 
-    .mobile-mini-cal span.cal-active {
-      background: #0084ff;
-      color: white;
-      font-weight: 700;
+    .mobile-stat-label {
+      font-size: 10px;
+      color: #888;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* ─── SECTIONS ────────────────────────────────────────── */
@@ -1401,49 +1380,71 @@
         </div>
       </div>
 
-      <!-- Mobile-only chat view (replaces phone mockup on small screens) -->
+      <!-- Mobile-only hero visual (replaces phone mockup on small screens) -->
       <div class="mobile-chat-view">
-        <div class="mobile-chat-header">
-          <div class="mobile-chat-avatar-wrap">
-            <img src="InboxRoute Logo (2)_edited.jpg" alt="InboxRoute">
-            <div class="mobile-chat-online"></div>
+
+        <!-- Dark flow card -->
+        <div class="mobile-hero-card">
+          <div class="mobile-live-badge">
+            <div class="mobile-live-dot"></div>
+            Automation Active
           </div>
-          <div>
-            <div class="mobile-chat-name">InboxRoute</div>
-            <div class="mobile-chat-status">Active now</div>
-          </div>
-        </div>
-        <div class="mobile-chat-messages">
-          <div class="mobile-bubble mobile-bubble-out">Do you have pricing info?</div>
-          <div class="mobile-bubble mobile-bubble-in">Yes, we do! We have three plans available.</div>
-          <div class="mobile-option-chips">
-            <div class="mobile-option-chip">Starter – $199/mo</div>
-            <div class="mobile-option-chip">Standard – $299/mo</div>
-            <div class="mobile-option-chip">Pro – $499/mo</div>
-          </div>
-          <div class="mobile-bubble mobile-bubble-out">Standard works for us — how do I get started?</div>
-          <div class="mobile-bubble mobile-bubble-in">Awesome! I'll book a demo call for you to get started.</div>
-        </div>
-        <div class="mobile-booking-result">
-          <div class="mobile-booking-row">
-            <div class="mobile-booking-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
-                <path d="M8 2V6M16 2V6M3 10H21" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+
+          <div class="mobile-flow">
+            <div class="mobile-flow-step">
+              <div class="mobile-flow-icon-wrap step-dm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <div class="mobile-flow-label">
+                <div class="mobile-flow-title">Instagram DM arrives</div>
+                <div class="mobile-flow-sub">"Do you have pricing info?"</div>
+              </div>
             </div>
-            <div>
-              <div class="mobile-booking-title">Meet with InboxRoute</div>
-              <div class="mobile-booking-time">Tomorrow at 11:00 AM</div>
+
+            <div class="mobile-flow-step">
+              <div class="mobile-flow-icon-wrap step-ai">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
+              <div class="mobile-flow-label">
+                <div class="mobile-flow-title">AI replies instantly</div>
+                <div class="mobile-flow-sub">Answers, qualifies &amp; closes</div>
+              </div>
+            </div>
+
+            <div class="mobile-flow-step">
+              <div class="mobile-flow-icon-wrap step-booked">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div class="mobile-flow-label">
+                <div class="mobile-flow-title">Appointment booked</div>
+                <div class="mobile-flow-sub">Tomorrow at 11:00 AM — confirmed</div>
+              </div>
             </div>
           </div>
-          <div class="mobile-booking-confirmed">Confirmed</div>
-          <div class="mobile-mini-cal">
-            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
-            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
-            <span>8</span><span>9</span><span>10</span><span class="cal-active">11</span><span>12</span><span>13</span><span>14</span>
+        </div>
+
+        <!-- Stats row -->
+        <div class="mobile-stats-row">
+          <div class="mobile-stat-card">
+            <div class="mobile-stat-number">24/7</div>
+            <div class="mobile-stat-label">Always On</div>
+          </div>
+          <div class="mobile-stat-card">
+            <div class="mobile-stat-number">100%</div>
+            <div class="mobile-stat-label">DMs Answered</div>
+          </div>
+          <div class="mobile-stat-card">
+            <div class="mobile-stat-number">0</div>
+            <div class="mobile-stat-label">Missed Leads</div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
