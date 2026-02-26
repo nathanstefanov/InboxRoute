@@ -550,16 +550,15 @@
     }
 
     .mobile-flow-step {
-      display: grid;
-      grid-template-columns: 40px 1fr;
-      column-gap: 16px;
-      align-items: center;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
       position: relative;
       z-index: 1;
     }
 
     .mobile-flow-icon-wrap {
-      width: 40px;
+      flex: 0 0 40px;
       height: 40px;
       border-radius: 14px;
       display: flex;
@@ -580,7 +579,9 @@
     }
 
     .mobile-flow-label {
+      flex: 1;
       min-width: 0;
+      padding-top: 2px;
     }
 
     .mobile-flow-title {
