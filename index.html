@@ -538,13 +538,13 @@
 
     .mobile-flow-step {
       display: flex;
-      align-items: center;
-      gap: 14px;
+      align-items: flex-start;
+      gap: 16px;
       position: relative;
     }
 
     .mobile-flow-step:not(:last-child) {
-      padding-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .mobile-flow-step:not(:last-child)::after {
@@ -553,7 +553,7 @@
       left: 19px;
       top: 40px;
       width: 2px;
-      height: 28px;
+      height: 20px;
       background: rgba(255,255,255,0.12);
     }
 
@@ -580,7 +580,10 @@
     }
 
     .mobile-flow-label {
-      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 40px;
     }
 
     .mobile-flow-title {
