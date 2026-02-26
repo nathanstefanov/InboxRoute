@@ -538,9 +538,13 @@
 
     .mobile-flow-step {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 14px;
       position: relative;
+    }
+
+    .mobile-flow-step:not(:last-child) {
+      padding-bottom: 28px;
     }
 
     .mobile-flow-step:not(:last-child)::after {
@@ -561,7 +565,6 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-bottom: 28px;
     }
 
     .mobile-flow-icon-wrap.step-dm {
@@ -577,7 +580,7 @@
     }
 
     .mobile-flow-label {
-      padding-top: 8px;
+      padding-top: 0;
     }
 
     .mobile-flow-title {
