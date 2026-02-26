@@ -1244,6 +1244,15 @@
         gap: 16px;
       }
 
+      /* Hide the CTA in hero-content; show it below the visual instead */
+      .hero-content .hero-cta { display: none; }
+
+      .hero-cta-mobile {
+        display: block;
+        margin: 24px auto 0;
+        text-align: center;
+      }
+
       .hero-content h1 {
         line-height: 1.15;
       }
@@ -1567,6 +1576,9 @@
             <div class="mobile-stat-label">Missed Leads</div>
           </div>
         </div>
+
+        <!-- CTA shown below the visual on mobile -->
+        <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta-mobile">Book a Call</a>
 
       </div>
     </div>
