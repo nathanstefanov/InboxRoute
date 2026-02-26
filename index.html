@@ -1229,16 +1229,27 @@
     }
 
     @media (max-width: 600px) {
+      /* ── Section spacing ── */
       section {
-        padding: 60px 5%;
+        padding: 48px 5%;
+      }
+
+      #pricing {
+        padding: 48px 5%;
       }
 
       .hero {
         min-height: 0;
-        padding: 60px 5%;
-        gap: 20px;
+        padding: 48px 5%;
+        gap: 16px;
       }
 
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 32px;
+      }
+
+      /* ── Phone / mobile visual ── */
       .phone-wrap,
       .float-card {
         display: none;
@@ -1248,6 +1259,95 @@
         display: block;
       }
 
+      /* ── Features ── */
+      .features-grid {
+        gap: 14px;
+      }
+
+      .feature-card {
+        padding: 24px 18px;
+      }
+
+      .feature-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 14px;
+      }
+
+      .feature-title {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      .feature-desc {
+        font-size: 14px;
+      }
+
+      /* ── How it works ── */
+      .steps-grid {
+        gap: 24px;
+      }
+
+      .step-card {
+        padding: 36px 18px 22px;
+      }
+
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 14px;
+      }
+
+      .step-title {
+        font-size: 17px;
+      }
+
+      /* ── Pricing ── */
+      .pricing-head {
+        margin-bottom: 32px;
+      }
+
+      .pricing-head h2 {
+        font-size: clamp(28px, 8vw, 40px);
+      }
+
+      .plans-grid {
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .plan-card {
+        padding: 24px 18px;
+      }
+
+      .plan-card.featured {
+        padding-top: 44px;
+      }
+
+      .price-amount {
+        font-size: 44px;
+      }
+
+      .plan-name {
+        font-size: 22px;
+      }
+
+      /* ── FAQ ── */
+      .faq-q {
+        padding: 16px 18px;
+      }
+
+      .faq-q-text {
+        font-size: 15px;
+      }
+
+      .faq-a,
+      .faq-item.open .faq-a {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      /* ── Billing toggle ── */
       .billing-toggle {
         flex-wrap: wrap;
         gap: 12px;
