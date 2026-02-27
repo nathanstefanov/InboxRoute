@@ -9,6 +9,7 @@
     { "source": "/thank-you-for-subscribing","destination": "/",                                                     "permanent": true },
     { "source": "/email",                   "destination": "/",                                                      "permanent": true },
     { "source": "/pricing",                 "destination": "/#pricing",                                              "permanent": true },
+    { "source": "/faq",                     "destination": "/#faq",                                                  "permanent": true },
 
     { "source": "/sol",                     "destination": "/solutions",                                             "permanent": true },
 
