@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/index",                   "destination": "/",                                                      "permanent": true },
+    { "source": "/:path*",                  "has": [{ "type": "host", "value": "inboxroute.net" }], "destination": "https://www.inboxroute.net/:path*", "permanent": true },
     { "source": "/index.html",              "destination": "/",                                                      "permanent": true },
     { "source": "/home",                    "destination": "/",                                                      "permanent": true },
     { "source": "/blank",                   "destination": "/",                                                      "permanent": true },
