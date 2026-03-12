@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Preview — How InboxRoute Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/main.css">
+  <style>
+    :root {
+      --blue: #0084ff;
+      --blue-dark: #0060cc;
+      --navy: #1a1a2e;
+      --gray-light: #f8fafc;
+      --gray-border: #e5e7eb;
+      --text-muted: #64748b;
+    }
+
+    body {
+      background: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--navy);
+    }
+
+    /* ─── PREVIEW WRAPPER ────────────────────────────── */
+    .preview-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .preview-page-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .preview-page-heading {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .preview-page-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 56px;
+    }
+
+    .option-block {
+      margin-bottom: 72px;
+    }
+
+    .option-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy);
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    /* ══════════════════════════════════════════════════
+       OPTION 1 — Horizontal step flow with dotted line
+    ══════════════════════════════════════════════════ */
+    .opt1-wrap {
+      background: #fff;
+      border: 1.5px solid var(--gray-border);
+      border-radius: 20px;
+      padding: 56px 40px 48px;
+    }
+
+    .opt1-section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .opt1-heading {
+      text-align: center;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 48px;
+    }
+
+    .opt1-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .opt1-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 4px);
+      right: calc(12.5% + 4px);
+      height: 2px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--gray-border) 0,
+        var(--gray-border) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+      z-index: 0;
+    }
+
+    .opt1-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .opt1-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,132,255,0.25);
+      flex-shrink: 0;
+    }
+
+    .opt1-step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .opt1-step-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════════════
+       OPTION 2 — Vertical timeline alternating cards
+    ══════════════════════════════════════════════════ */
+    .opt2-wrap {
+      background: #fff;
+      border: 1.5px solid var(--gray-border);
+      border-radius: 20px;
+      padding: 56px 40px 48px;
+    }
+
+    .opt2-section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .opt2-heading {
+      text-align: center;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 56px;
+    }
+
+    .opt2-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .opt2-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background: var(--gray-border);
+    }
+
+    .opt2-item {
+      display: grid;
+      grid-template-columns: 1fr 56px 1fr;
+      align-items: center;
+      margin-bottom: 48px;
+      gap: 24px;
+    }
+
+    .opt2-item:last-child { margin-bottom: 0; }
+
+    .opt2-card {
+      background: var(--gray-light);
+      border: 1.5px solid var(--gray-border);
+      border-radius: 14px;
+      padding: 22px 24px;
+    }
+
+    .opt2-item:nth-child(even) .opt2-card-left { visibility: hidden; }
+    .opt2-item:nth-child(odd) .opt2-card-right { visibility: hidden; }
+
+    .opt2-dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,132,255,0.25);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .opt2-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .opt2-card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════════════
+       OPTION 3 — Circular / arc arrangement
+    ══════════════════════════════════════════════════ */
+    .opt3-wrap {
+      background: #fff;
+      border: 1.5px solid var(--gray-border);
+      border-radius: 20px;
+      padding: 56px 40px 64px;
+    }
+
+    .opt3-section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .opt3-heading {
+      text-align: center;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 56px;
+    }
+
+    .opt3-circle-container {
+      position: relative;
+      width: 520px;
+      height: 520px;
+      margin: 0 auto;
+    }
+
+    .opt3-ring {
+      position: absolute;
+      inset: 60px;
+      border-radius: 50%;
+      border: 2px dashed var(--gray-border);
+    }
+
+    .opt3-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--blue);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,132,255,0.3);
+      color: #fff;
+      text-align: center;
+    }
+
+    .opt3-center-num {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .opt3-center-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* Nodes at 12, 3, 6, 9 o'clock positions */
+    .opt3-node {
+      position: absolute;
+      width: 200px;
+    }
+
+    /* Top — step 1 */
+    .opt3-node-1 {
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    /* Right — step 2 */
+    .opt3-node-2 {
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%);
+      text-align: left;
+    }
+
+    /* Bottom — step 3 */
+    .opt3-node-3 {
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    /* Left — step 4 */
+    .opt3-node-4 {
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%);
+      text-align: right;
+    }
+
+    .opt3-node-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2.5px solid var(--blue);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 10px rgba(0,132,255,0.15);
+    }
+
+    .opt3-node-1 .opt3-node-dot,
+    .opt3-node-3 .opt3-node-dot {
+      display: flex;
+      margin: 0 auto 8px;
+    }
+
+    .opt3-node-2 .opt3-node-dot {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .opt3-node-4 .opt3-node-dot {
+      display: block;
+      margin-left: auto;
+      margin-bottom: 8px;
+    }
+
+    .opt3-node-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .opt3-node-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════════════════
+       OPTION 4 — Dark strip with horizontal rows
+    ══════════════════════════════════════════════════ */
+    .opt4-wrap {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 56px 48px 48px;
+      overflow: hidden;
+    }
+
+    .opt4-section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 10px;
+    }
+
+    .opt4-heading {
+      text-align: center;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+
+    .opt4-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .opt4-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 20px 24px;
+      transition: background 0.2s;
+    }
+
+    .opt4-row:hover { background: rgba(255,255,255,0.09); }
+
+    .opt4-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .opt4-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .opt4-step-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 3px;
+    }
+
+    .opt4-row-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .opt4-row-desc {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .opt4-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 32px 0;
+    }
+
+    .opt4-platforms {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 4px;
+    }
+
+    .opt4-platforms svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+      flex-shrink: 0;
+      overflow: visible;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .opt4-platforms svg:hover { opacity: 1; }
+
+    .opt4-platform-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 700px) {
+      .opt1-steps {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .opt1-steps::before { display: none; }
+
+      .opt2-item {
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: auto;
+      }
+      .opt2-card-left,
+      .opt2-card-right { grid-column: 2; grid-row: 1; }
+      .opt2-dot { grid-column: 1; grid-row: 1; width: 40px; height: 40px; font-size: 14px; }
+      .opt2-item:nth-child(even) .opt2-card-left { visibility: visible; }
+      .opt2-item:nth-child(odd) .opt2-card-right { visibility: visible; }
+      .opt2-item:nth-child(even) .opt2-card-right { display: none; }
+      .opt2-item:nth-child(odd) .opt2-card-left { display: none; }
+      .opt2-timeline::before { left: 20px; }
+
+      .opt3-circle-container {
+        width: 100%;
+        height: auto;
+      }
+      .opt3-ring { display: none; }
+      .opt3-center { display: none; }
+      .opt3-node {
+        position: static;
+        transform: none;
+        width: 100%;
+        text-align: left !important;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .opt3-node-dot {
+        display: flex !important;
+        flex-shrink: 0;
+        margin: 0 !important;
+      }
+      .opt3-circle-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .opt4-wrap { padding: 40px 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-page">
+
+  <p class="preview-page-title">Design Preview</p>
+  <h1 class="preview-page-heading">How InboxRoute Works — 4 Layout Options</h1>
+  <p class="preview-page-sub">Same content, four different treatments. Pick your favourite.</p>
+
+
+  <!-- ════════════════════════════════════════════════
+       OPTION 1 — Horizontal step flow + dotted line
+  ════════════════════════════════════════════════ -->
+  <div class="option-block">
+    <span class="option-label">Option 1 — Horizontal Step Flow</span>
+    <div class="opt1-wrap">
+      <p class="opt1-section-label">How It Works</p>
+      <h2 class="opt1-heading">Four Steps. Zero Effort on Your Part.</h2>
+      <div class="opt1-steps">
+        <div class="opt1-step">
+          <div class="opt1-num">01</div>
+          <div class="opt1-step-title">Instant Responses</div>
+          <p class="opt1-step-desc">Replies immediately to inbound messages, ensuring no prospect is ever left waiting even after hours.</p>
+        </div>
+        <div class="opt1-step">
+          <div class="opt1-num">02</div>
+          <div class="opt1-step-title">Dynamic Conversations</div>
+          <p class="opt1-step-desc">Goes beyond basic bots to actively navigate pricing concerns, service details, and routine questions using your custom knowledge base.</p>
+        </div>
+        <div class="opt1-step">
+          <div class="opt1-num">03</div>
+          <div class="opt1-step-title">Custom Brand Voice</div>
+          <p class="opt1-step-desc">Trained on your specific business details, ensuring every reply sounds like a natural, professional extension of your actual team.</p>
+        </div>
+        <div class="opt1-step">
+          <div class="opt1-num">04</div>
+          <div class="opt1-step-title">Automated Routing</div>
+          <p class="opt1-step-desc">Delivers your preferred booking link or website directly to the user the exact moment their questions are resolved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════
+       OPTION 2 — Vertical timeline alternating cards
+  ════════════════════════════════════════════════ -->
+  <div class="option-block">
+    <span class="option-label">Option 2 — Vertical Timeline</span>
+    <div class="opt2-wrap">
+      <p class="opt2-section-label">How It Works</p>
+      <h2 class="opt2-heading">Four Steps. Zero Effort on Your Part.</h2>
+      <div class="opt2-timeline">
+
+        <div class="opt2-item">
+          <div class="opt2-card opt2-card-left">
+            <div class="opt2-card-title">Instant Responses</div>
+            <p class="opt2-card-desc">Replies immediately to inbound messages, ensuring no prospect is ever left waiting even after hours.</p>
+          </div>
+          <div class="opt2-dot">01</div>
+          <div class="opt2-card opt2-card-right"></div>
+        </div>
+
+        <div class="opt2-item">
+          <div class="opt2-card opt2-card-left"></div>
+          <div class="opt2-dot">02</div>
+          <div class="opt2-card opt2-card-right">
+            <div class="opt2-card-title">Dynamic Conversations</div>
+            <p class="opt2-card-desc">Goes beyond basic bots to actively navigate pricing concerns, service details, and routine questions using your custom knowledge base.</p>
+          </div>
+        </div>
+
+        <div class="opt2-item">
+          <div class="opt2-card opt2-card-left">
+            <div class="opt2-card-title">Custom Brand Voice</div>
+            <p class="opt2-card-desc">Trained on your specific business details, ensuring every reply sounds like a natural, professional extension of your actual team.</p>
+          </div>
+          <div class="opt2-dot">03</div>
+          <div class="opt2-card opt2-card-right"></div>
+        </div>
+
+        <div class="opt2-item">
+          <div class="opt2-card opt2-card-left"></div>
+          <div class="opt2-dot">04</div>
+          <div class="opt2-card opt2-card-right">
+            <div class="opt2-card-title">Automated Routing</div>
+            <p class="opt2-card-desc">Delivers your preferred booking link or website directly to the user the exact moment their questions are resolved.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════
+       OPTION 3 — Circular arc arrangement
+  ════════════════════════════════════════════════ -->
+  <div class="option-block">
+    <span class="option-label">Option 3 — Circular Arc</span>
+    <div class="opt3-wrap">
+      <p class="opt3-section-label">How It Works</p>
+      <h2 class="opt3-heading">Four Steps. Zero Effort on Your Part.</h2>
+      <div class="opt3-circle-container">
+        <div class="opt3-ring"></div>
+
+        <div class="opt3-center">
+          <div class="opt3-center-num">24/7</div>
+          <div class="opt3-center-label">Automated</div>
+        </div>
+
+        <!-- Step 1 — Top -->
+        <div class="opt3-node opt3-node-1">
+          <div class="opt3-node-dot">01</div>
+          <div class="opt3-node-title">Instant Responses</div>
+          <p class="opt3-node-desc">Replies immediately to inbound messages, ensuring no prospect is left waiting.</p>
+        </div>
+
+        <!-- Step 2 — Right -->
+        <div class="opt3-node opt3-node-2">
+          <div class="opt3-node-dot">02</div>
+          <div class="opt3-node-title">Dynamic Conversations</div>
+          <p class="opt3-node-desc">Navigates pricing concerns, service details, and questions using your knowledge base.</p>
+        </div>
+
+        <!-- Step 3 — Bottom -->
+        <div class="opt3-node opt3-node-3">
+          <div class="opt3-node-dot">03</div>
+          <div class="opt3-node-title">Custom Brand Voice</div>
+          <p class="opt3-node-desc">Every reply sounds like a natural, professional extension of your actual team.</p>
+        </div>
+
+        <!-- Step 4 — Left -->
+        <div class="opt3-node opt3-node-4">
+          <div class="opt3-node-dot">04</div>
+          <div class="opt3-node-title">Automated Routing</div>
+          <p class="opt3-node-desc">Delivers your booking link the exact moment their questions are resolved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════
+       OPTION 4 — Dark strip horizontal rows
+  ════════════════════════════════════════════════ -->
+  <div class="option-block">
+    <span class="option-label">Option 4 — Dark Strip</span>
+    <div class="opt4-wrap">
+      <p class="opt4-section-label">How It Works</p>
+      <h2 class="opt4-heading">Four Steps. Zero Effort on Your Part.</h2>
+
+      <div class="opt4-rows">
+
+        <div class="opt4-row">
+          <div class="opt4-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="opt4-step-num">Step 01</div>
+            <div class="opt4-row-title">Instant Responses</div>
+            <p class="opt4-row-desc">Replies immediately to inbound messages, ensuring no prospect is ever left waiting even after hours.</p>
+          </div>
+        </div>
+
+        <div class="opt4-row">
+          <div class="opt4-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="opt4-step-num">Step 02</div>
+            <div class="opt4-row-title">Dynamic Conversations</div>
+            <p class="opt4-row-desc">Goes beyond basic bots to actively navigate pricing concerns, service details, and routine questions using your custom knowledge base.</p>
+          </div>
+        </div>
+
+        <div class="opt4-row">
+          <div class="opt4-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="opt4-step-num">Step 03</div>
+            <div class="opt4-row-title">Custom Brand Voice</div>
+            <p class="opt4-row-desc">Trained on your specific business details, ensuring every reply sounds like a natural, professional extension of your actual team.</p>
+          </div>
+        </div>
+
+        <div class="opt4-row">
+          <div class="opt4-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+          <div>
+            <div class="opt4-step-num">Step 04</div>
+            <div class="opt4-row-title">Automated Routing</div>
+            <p class="opt4-row-desc">Delivers your preferred booking link or website directly to the user the exact moment their questions are resolved.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="opt4-divider"></div>
+      <p class="opt4-platform-label">Works across all major platforms</p>
+      <div class="opt4-platforms">
+        <!-- Instagram -->
+        <svg aria-label="Instagram" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="ig-grad-opt4" cx="30%" cy="107%" r="150%">
+              <stop offset="0%" stop-color="#fdf497"/>
+              <stop offset="10%" stop-color="#fdf497"/>
+              <stop offset="50%" stop-color="#fd5949"/>
+              <stop offset="68%" stop-color="#d6249f"/>
+              <stop offset="100%" stop-color="#285AEB"/>
+            </radialGradient>
+          </defs>
+          <path fill="url(#ig-grad-opt4)" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.497 5.783 2.226 7.15 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12c0-3.259-.014-3.668-.072-4.948-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+        <!-- Facebook -->
+        <svg aria-label="Facebook" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#1877F2" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+        </svg>
+        <!-- WhatsApp -->
+        <svg aria-label="WhatsApp" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+        <!-- TikTok -->
+        <svg aria-label="TikTok" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+        </svg>
+        <!-- Telegram -->
+        <svg aria-label="Telegram" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#26A5E4" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /preview-page -->
+</body>
+</html>
