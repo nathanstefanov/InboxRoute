@@ -362,3 +362,197 @@ footer {
     text-align: center;
   }
 }
+
+/* ─── CIRCULAR ARC — HOW IT WORKS (solutions.html) ──────── */
+.circ-heading {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  color: #111;
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.circ-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto 0;
+  display: block;
+}
+
+.circ-ring {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  right: 60px;
+  bottom: 60px;
+  border-radius: 50%;
+  border: 2px dashed #d1d5db;
+}
+
+.circ-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #0084ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(0,132,255,0.3);
+}
+
+.circ-center-num {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.circ-center-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.circ-node {
+  position: absolute;
+  text-align: center;
+  width: 160px;
+}
+
+/* Top — 12 o'clock */
+.circ-node-top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right — 3 o'clock */
+.circ-node-right {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  text-align: left;
+  width: 150px;
+}
+
+/* Bottom — 6 o'clock */
+.circ-node-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Left — 9 o'clock */
+.circ-node-left {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  text-align: right;
+  width: 150px;
+}
+
+.circ-dot {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #0084ff;
+  color: #0084ff;
+  font-size: 13px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+.circ-node-top .circ-dot,
+.circ-node-bottom .circ-dot {
+  display: flex;
+  margin: 0 auto 8px;
+}
+
+.circ-node-right .circ-dot {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.circ-node-left .circ-dot {
+  display: flex;
+  margin-left: auto;
+  margin-bottom: 8px;
+}
+
+.circ-node-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.circ-node-desc {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Mobile fallback */
+.circ-mobile-list { display: none; }
+
+@media (max-width: 600px) {
+  .circ-container { display: none; }
+
+  .circ-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .circ-mobile-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .circ-ml-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #0084ff;
+    color: #0084ff;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .circ-ml-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+  }
+
+  .circ-ml-desc {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+}

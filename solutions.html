@@ -99,63 +99,6 @@
       gap: 16px;
     }
 
-    .how-it-works-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .solution-card {
-      background: #fff;
-      border: 2px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 24px 20px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .solution-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, #0084ff, #00c6ff);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-
-    .solution-card:hover::before { transform: scaleX(1); }
-    .solution-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
-
-    .solution-icon {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, #0084ff, #00c6ff);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-      color: #fff;
-      flex-shrink: 0;
-    }
-
-    .solution-icon svg { width: 26px; height: 26px; }
-
-    .solution-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #1a1a2e;
-      margin-bottom: 8px;
-    }
-
-    .solution-description {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
-    }
 
     /* ─── INDUSTRIES ──────────────────────────────────────── */
     .industries-wrapper {
@@ -314,7 +257,6 @@
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (min-width: 640px) {
       .solutions-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-      .how-it-works-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
       .industries-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .cta-buttons { flex-direction: row; justify-content: center; }
     }
@@ -464,52 +406,82 @@
 <!-- ─── HOW INBOXROUTE WORKS ───────────────────────────────── -->
 <section class="solutions-section">
   <div class="section-header">
-    <h2 class="section-title">How InboxRoute Works</h2>
+    <h2 class="circ-heading">How It Works</h2>
   </div>
-  <div class="how-it-works-grid">
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h3 class="solution-title">Instant Responses</h3>
-      <p class="solution-description">Replies immediately to inbound Instagram &amp; Facebook messages, ensuring no prospect is ever left waiting even after hours.</p>
+
+  <!-- Circle layout -->
+  <div class="circ-container" aria-label="How InboxRoute Works — 4 steps">
+
+    <div class="circ-ring" aria-hidden="true"></div>
+
+    <!-- Center badge -->
+    <div class="circ-center" aria-label="InboxRoute AI DM automation runs 24/7 automatically">
+      <span class="circ-center-num">24/7</span>
+      <span class="circ-center-label">AUTOMATED</span>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="12" cy="17" r="0.5" fill="currentColor" stroke="currentColor"/>
-        </svg>
-      </div>
-      <h3 class="solution-title">Dynamic Conversations</h3>
-      <p class="solution-description">Goes beyond basic bots to actively navigate pricing concerns, service details, and routine questions using your custom knowledge base.</p>
+
+    <!-- Step 01 — Top -->
+    <div class="circ-node circ-node-top">
+      <div class="circ-dot" aria-hidden="true">01</div>
+      <div class="circ-node-title">Instant Responses</div>
+      <p class="circ-node-desc">Replies immediately to inbound messages, so no prospect ever waits.</p>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-          <path d="M20 8v6m-3-3h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3 class="solution-title">Custom Brand Voice</h3>
-      <p class="solution-description">Trained on your specific business details, ensuring every reply sounds like a natural, professional extension of your actual team.</p>
+
+    <!-- Step 02 — Right -->
+    <div class="circ-node circ-node-right">
+      <div class="circ-dot" aria-hidden="true">02</div>
+      <div class="circ-node-title">Dynamic Conversations</div>
+      <p class="circ-node-desc">Navigates pricing, service details, and questions using your knowledge base.</p>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-          <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3 class="solution-title">Automated Routing</h3>
-      <p class="solution-description">Delivers your preferred booking link or website directly to the user the exact moment their questions are resolved.</p>
+
+    <!-- Step 03 — Bottom -->
+    <div class="circ-node circ-node-bottom">
+      <div class="circ-dot" aria-hidden="true">03</div>
+      <div class="circ-node-title">Custom Brand Voice</div>
+      <p class="circ-node-desc">Every reply sounds like a natural extension of your actual team.</p>
     </div>
+
+    <!-- Step 04 — Left -->
+    <div class="circ-node circ-node-left">
+      <div class="circ-dot" aria-hidden="true">04</div>
+      <div class="circ-node-title">Automated Routing</div>
+      <p class="circ-node-desc">Delivers your booking link the exact moment their questions are resolved.</p>
+    </div>
+
   </div>
+
+  <!-- Mobile fallback list -->
+  <ol class="circ-mobile-list">
+    <li>
+      <div class="circ-ml-num">01</div>
+      <div>
+        <div class="circ-ml-title">Instant Responses</div>
+        <p class="circ-ml-desc">Replies immediately to inbound messages, so no prospect ever waits.</p>
+      </div>
+    </li>
+    <li>
+      <div class="circ-ml-num">02</div>
+      <div>
+        <div class="circ-ml-title">Dynamic Conversations</div>
+        <p class="circ-ml-desc">Navigates pricing, service details, and questions using your knowledge base.</p>
+      </div>
+    </li>
+    <li>
+      <div class="circ-ml-num">03</div>
+      <div>
+        <div class="circ-ml-title">Custom Brand Voice</div>
+        <p class="circ-ml-desc">Every reply sounds like a natural extension of your actual team.</p>
+      </div>
+    </li>
+    <li>
+      <div class="circ-ml-num">04</div>
+      <div>
+        <div class="circ-ml-title">Automated Routing</div>
+        <p class="circ-ml-desc">Delivers your booking link the exact moment their questions are resolved.</p>
+      </div>
+    </li>
+  </ol>
+
 </section>
 
 <!-- ─── BUILT FOR YOUR INDUSTRY ────────────────────────────── -->
