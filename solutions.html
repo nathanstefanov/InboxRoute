@@ -343,6 +343,21 @@
       }
     });
   })();
+
+  function ind10Filter(btn, id) {
+    var wrap = btn.closest('.ind10-wrap');
+    var isActive = btn.classList.contains('ind10-pill-active');
+    wrap.querySelectorAll('.ind10-pill').forEach(function(p){ p.classList.remove('ind10-pill-active'); });
+    wrap.querySelectorAll('.ind10-card').forEach(function(c){ c.classList.remove('ind10-card-active'); });
+    var prompt = wrap.querySelector('#ind10-prompt');
+    if (!isActive) {
+      btn.classList.add('ind10-pill-active');
+      wrap.querySelector('#' + id).classList.add('ind10-card-active');
+      if (prompt) prompt.style.display = 'none';
+    } else {
+      if (prompt) prompt.style.display = '';
+    }
+  }
 </script>
 
 <!-- ─── PAGE HERO ─────────────────────────────────────────── -->
@@ -485,56 +500,47 @@
 </section>
 
 <!-- ─── BUILT FOR YOUR INDUSTRY ────────────────────────────── -->
-<div class="industries-wrapper">
-  <div class="industries-inner">
-    <div class="section-header">
-      <h2 class="section-title">Built for Your Industry</h2>
-      <p class="section-description">Trusted by businesses across every vertical</p>
+<section class="solutions-section">
+  <div class="ind10-wrap">
+    <h2 class="ind10-heading">Built for Your Industry</h2>
+    <!-- Stat strip -->
+    <div class="ind10-strip">
+      <div class="ind10-stats">
+        <div class="ind10-stat"><div class="ind10-stat-num">9×</div><div class="ind10-stat-label">more likely to qualify leads with instant responses</div></div>
+        <div class="ind10-stat-div"></div>
+        <div class="ind10-stat"><div class="ind10-stat-num">78%</div><div class="ind10-stat-label">of customers buy from whoever responds first</div></div>
+        <div class="ind10-stat-div"></div>
+        <div class="ind10-stat"><div class="ind10-stat-num">90%</div><div class="ind10-stat-label">of DMs go unanswered by small businesses</div></div>
+        <div class="ind10-stat-div"></div>
+        <div class="ind10-stat"><div class="ind10-stat-num">24/7</div><div class="ind10-stat-label">automated coverage across all your platforms</div></div>
+      </div>
     </div>
-    <div class="industries-grid">
-      <div class="industry-card">
-        <span class="industry-emoji">💼</span>
-        <h3 class="industry-name">Professional Services</h3>
-        <p class="industry-description">Consultants, coaches, and agencies using DMs to seamlessly book discovery calls</p>
+    <!-- Pill + card section -->
+    <div class="ind10-lower">
+      <div class="ind10-pills">
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-0')">Professional Services</button>
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-1')">Fitness &amp; Wellness</button>
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-2')">Real Estate</button>
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-3')">Beauty &amp; Salons</button>
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-4')">E-commerce</button>
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-5')">Restaurants &amp; Food</button>
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-6')">Education &amp; Training</button>
+        <button class="ind10-pill" type="button" onclick="ind10Filter(this,'i10-7')">B2B Services</button>
       </div>
-      <div class="industry-card">
-        <span class="industry-emoji">🏋️</span>
-        <h3 class="industry-name">Fitness &amp; Wellness</h3>
-        <p class="industry-description">Gyms, trainers, and wellness brands managing class bookings and membership inquiries</p>
-      </div>
-      <div class="industry-card">
-        <span class="industry-emoji">🏠</span>
-        <h3 class="industry-name">Real Estate</h3>
-        <p class="industry-description">Agents automating property inquiries and instantly routing buyers to showing requests</p>
-      </div>
-      <div class="industry-card">
-        <span class="industry-emoji">✂️</span>
-        <h3 class="industry-name">Beauty &amp; Salons</h3>
-        <p class="industry-description">Salons, barbers, and spas keeping their chairs full with automated appointment bookings</p>
-      </div>
-      <div class="industry-card">
-        <span class="industry-emoji">🛍️</span>
-        <h3 class="industry-name">E-commerce</h3>
-        <p class="industry-description">Online brands instantly answering product questions and routing buyers directly to checkout pages</p>
-      </div>
-      <div class="industry-card">
-        <span class="industry-emoji">🍕</span>
-        <h3 class="industry-name">Restaurants &amp; Food</h3>
-        <p class="industry-description">High-volume venues managing event inquiries, catering requests, and reservations</p>
-      </div>
-      <div class="industry-card">
-        <span class="industry-emoji">🎓</span>
-        <h3 class="industry-name">Education &amp; Training</h3>
-        <p class="industry-description">Course creators and educators routing prospective students to enrollment calls</p>
-      </div>
-      <div class="industry-card">
-        <span class="industry-emoji">🏢</span>
-        <h3 class="industry-name">B2B Services</h3>
-        <p class="industry-description">Software companies and service providers routing enterprise prospects directly to demo calls</p>
+      <p class="ind10-prompt" id="ind10-prompt">Select an industry to learn more</p>
+      <div class="ind10-cards">
+        <div id="i10-0" class="ind10-card"><div class="ind10-card-name">Professional Services</div><p class="ind10-card-desc">Lawyers, consultants, and accountants book more retainers when InboxRoute qualifies and routes high-intent DM prospects before the first call, automatically.</p></div>
+        <div id="i10-1" class="ind10-card"><div class="ind10-card-name">Fitness &amp; Wellness</div><p class="ind10-card-desc">Personal trainers and coaches turn followers into booked sessions by answering pricing questions and sending a scheduling link automatically, day or night.</p></div>
+        <div id="i10-2" class="ind10-card"><div class="ind10-card-name">Real Estate</div><p class="ind10-card-desc">Agents close more viewings when every listing enquiry gets an instant reply that qualifies the buyer and books a showing while competitors sleep.</p></div>
+        <div id="i10-3" class="ind10-card"><div class="ind10-card-name">Beauty &amp; Salons</div><p class="ind10-card-desc">Stylists fill their appointment books without back-and-forth. Pricing, availability, and booking link delivery handled by InboxRoute automatically.</p></div>
+        <div id="i10-4" class="ind10-card"><div class="ind10-card-name">E-commerce</div><p class="ind10-card-desc">Product brands reduce cart abandonment by answering sizing, shipping, and returns questions in real time before shoppers lose interest.</p></div>
+        <div id="i10-5" class="ind10-card"><div class="ind10-card-name">Restaurants &amp; Food</div><p class="ind10-card-desc">Restaurants convert DM enquiries about menus, reservations, and events into confirmed bookings without lifting a finger.</p></div>
+        <div id="i10-6" class="ind10-card"><div class="ind10-card-name">Education &amp; Training</div><p class="ind10-card-desc">Course creators enrol more students by instantly answering curriculum questions and delivering an enrolment link the moment interest peaks.</p></div>
+        <div id="i10-7" class="ind10-card"><div class="ind10-card-name">B2B Services</div><p class="ind10-card-desc">Agencies qualify inbound leads 24/7, filtering tyre-kickers and booking discovery calls with high-value prospects automatically.</p></div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ─── CTA ────────────────────────────────────────────────── -->
 <div class="cta-wrapper">

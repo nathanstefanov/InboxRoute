@@ -600,3 +600,74 @@ footer {
     line-height: 1.5;
   }
 }
+
+/* ─── BUILT FOR YOUR INDUSTRY (ind10) ────────────────────── */
+.ind10-wrap {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.ind10-heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.02em;
+  text-align: center;
+  padding: 40px 40px 28px;
+  background: #fff;
+}
+.ind10-strip {
+  background: #f1f3f5;
+  padding: 32px 40px;
+}
+.ind10-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.ind10-stat { flex: 1; text-align: center; padding: 0 16px; }
+.ind10-stat-div { width: 1px; background: #ddd; align-self: stretch; }
+.ind10-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2563EB;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+.ind10-stat-label { font-size: 12px; color: #888; line-height: 1.4; }
+.ind10-lower { background: #fff; padding: 28px 40px 40px; }
+.ind10-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.ind10-pill {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.ind10-pill:hover { border-color: #0084ff; color: #0084ff; }
+.ind10-pill-active { background: #0084ff; border-color: #0084ff; color: #fff; }
+.ind10-prompt { text-align: center; font-size: 13px; color: #aaa; font-style: italic; margin: 0 0 16px; }
+.ind10-card { display: none; flex-direction: column; padding: 28px; background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 16px; }
+.ind10-card-active { display: flex; }
+.ind10-card-name { font-size: 19px; font-weight: 800; color: #111; letter-spacing: -0.02em; margin-bottom: 8px; }
+.ind10-card-desc { font-size: 14.5px; color: #6b7280; line-height: 1.7; margin: 0; }
+
+@media (max-width: 700px) {
+  .ind10-strip { padding: 24px 20px; }
+  .ind10-stats { flex-direction: column; gap: 20px; }
+  .ind10-stat-div { display: none; }
+  .ind10-lower { padding: 20px 20px 32px; }
+  .ind10-heading { padding: 28px 20px 20px; }
+}
