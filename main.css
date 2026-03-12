@@ -363,6 +363,44 @@ footer {
   }
 }
 
+/* ─── SOLUTION CARDS (solutions.html — What InboxRoute Solves) ── */
+.solution-card {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, #0084ff, #00c6ff);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.solution-card:hover::before { transform: scaleX(1); }
+.solution-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+
+.solution-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.solution-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
 /* ─── CIRCULAR ARC — HOW IT WORKS (solutions.html) ──────── */
 .circ-heading {
   font-size: clamp(24px, 4vw, 36px);
@@ -373,20 +411,26 @@ footer {
   margin-bottom: 40px;
 }
 
+/*
+  700px total container. The dashed ring sits inset 190px each side
+  so its diameter = 700 - 380 = 320px, centred at 350px.
+  Nodes sit at the four cardinal points, offset so their inner edge
+  touches just outside the ring.
+*/
 .circ-container {
   position: relative;
-  width: 500px;
-  height: 500px;
-  margin: 0 auto 0;
+  width: 700px;
+  height: 700px;
+  margin: 0 auto;
   display: block;
 }
 
 .circ-ring {
   position: absolute;
-  top: 60px;
-  left: 60px;
-  right: 60px;
-  bottom: 60px;
+  top: 190px;
+  left: 190px;
+  right: 190px;
+  bottom: 190px;
   border-radius: 50%;
   border: 2px dashed #d1d5db;
 }
@@ -424,42 +468,43 @@ footer {
   margin-top: 3px;
 }
 
+/* All nodes share a min-width so text never collapses */
 .circ-node {
   position: absolute;
-  text-align: center;
-  width: 160px;
+  min-width: 180px;
+  max-width: 180px;
 }
 
-/* Top — 12 o'clock */
+/* Top — 12 o'clock: centred horizontally, sits at the very top */
 .circ-node-top {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
 }
 
-/* Right — 3 o'clock */
+/* Right — 3 o'clock: vertically centred, right edge of container */
 .circ-node-right {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
   text-align: left;
-  width: 150px;
 }
 
-/* Bottom — 6 o'clock */
+/* Bottom — 6 o'clock: centred horizontally, sits at the very bottom */
 .circ-node-bottom {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
 }
 
-/* Left — 9 o'clock */
+/* Left — 9 o'clock: vertically centred, left edge of container */
 .circ-node-left {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
   text-align: right;
-  width: 150px;
 }
 
 .circ-dot {
@@ -495,14 +540,14 @@ footer {
 }
 
 .circ-node-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #111;
   margin-bottom: 4px;
 }
 
 .circ-node-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: #6b7280;
   line-height: 1.5;
 }
