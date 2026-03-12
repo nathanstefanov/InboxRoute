@@ -192,65 +192,61 @@
     }
 
     /* ─── CTA ─────────────────────────────────────────────── */
+    .cta-wrapper {
+      padding: 0 5% 72px;
+    }
+
     .cta-section {
       text-align: center;
       padding: 72px 40px;
-      background: linear-gradient(135deg, #0084ff 0%, #00c6ff 100%);
-      border-radius: 28px;
-      box-shadow: 0 16px 56px rgba(0,132,255,0.25);
-      position: relative;
-      overflow: hidden;
+      background: #fff;
     }
 
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 25% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.02em;
+    .cta-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      color: #1a1a2e;
       margin-bottom: 16px;
-      position: relative;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
-    .cta-section p {
-      font-size: 18px;
-      color: rgba(255,255,255,0.88);
-      margin-bottom: 36px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+    .cta-title span {
+      background: linear-gradient(90deg, #0084ff, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-description {
+      font-size: clamp(15px, 2vw, 17px);
+      color: #666;
+      max-width: 440px;
+      margin: 0 auto 36px;
       line-height: 1.6;
-      position: relative;
     }
 
     .cta-button {
-      display: inline-block;
-      padding: 16px 44px;
-      background: #fff;
-      color: #0084ff;
-      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0084ff;
+      color: #fff;
+      padding: 16px 36px;
       border-radius: 12px;
-      font-size: 16px;
+      text-decoration: none;
       font-weight: 700;
+      font-size: 16px;
       letter-spacing: 0.2px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
-      position: relative;
+      box-shadow: 0 4px 24px rgba(0,132,255,0.3);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
     }
 
     .cta-button:hover {
+      background: #0070d6;
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-      background: #f0f8ff;
+      box-shadow: 0 8px 32px rgba(0,132,255,0.4);
     }
 
     /* ─── TESTIMONIALS ───────────────────────────────────── */
@@ -319,9 +315,7 @@
       .team-member { padding: 32px 24px 28px; }
       .team-photo { width: 120px; height: 120px; }
       .team-name { font-size: 20px; }
-      .cta-section { padding: 40px 20px; border-radius: 20px; }
-      .cta-section h2 { font-size: 24px; }
-      .cta-section p { font-size: 15px; }
+      .cta-section { padding: 40px 20px; }
       .about-testimonials { margin-bottom: 48px; }
     }
   </style>
@@ -507,11 +501,13 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-section">
-    <h2>Ready to Get Started?</h2>
-    <p>Let's talk about how InboxRoute can help your business stop losing leads in the DMs.</p>
-    <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Talk with Our Team</a>
-  </section>
+  <div class="cta-wrapper">
+    <div class="cta-section">
+      <h2 class="cta-title">Ready to<br><span>Get Started?</span></h2>
+      <p class="cta-description">Let's talk about how InboxRoute can help your business.</p>
+      <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Talk with Our Team →</a>
+    </div>
+  </div>
 
 </div>
 
