@@ -601,6 +601,21 @@ footer {
   }
 }
 
+/* ─── SOLUTIONS NAV LINKS ────────────────────────────────── */
+.solutions-nav-links {
+  text-align: center;
+  margin-top: 32px;
+}
+.solutions-nav-link {
+  color: #0084ff;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 16px;
+}
+.solutions-nav-link:hover {
+  text-decoration: underline;
+}
+
 /* ─── BUILT FOR YOUR INDUSTRY (ind10) ────────────────────── */
 .ind10-wrap {
   background: #fff;
