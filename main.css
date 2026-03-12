@@ -488,7 +488,7 @@ footer {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  text-align: left;
+  text-align: center;
 }
 
 /* Bottom — 6 o'clock: centred horizontally, sits at the very bottom */
@@ -504,7 +504,7 @@ footer {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  text-align: right;
+  text-align: center;
 }
 
 .circ-dot {
@@ -530,13 +530,12 @@ footer {
 
 .circ-node-right .circ-dot {
   display: flex;
-  margin-bottom: 8px;
+  margin: 0 auto 8px;
 }
 
 .circ-node-left .circ-dot {
   display: flex;
-  margin-left: auto;
-  margin-bottom: 8px;
+  margin: 0 auto 8px;
 }
 
 .circ-node-title {
