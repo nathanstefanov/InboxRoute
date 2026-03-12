@@ -808,7 +808,7 @@
 
     /* ─── TESTIMONIALS ───────────────────────────────────── */
     #testimonials {
-      background: #1a1a2e;
+      background: #f8fafc;
       padding: 80px 5%;
     }
 
@@ -821,7 +821,7 @@
       text-align: center;
       font-size: clamp(28px, 4vw, 42px);
       font-weight: 800;
-      color: #fff;
+      color: #1a1a2e;
       letter-spacing: -0.02em;
       margin-bottom: 52px;
     }
@@ -840,19 +840,21 @@
     }
 
     .testimonial-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #fff;
+      border: 1.5px solid #e5e7eb;
       border-radius: 20px;
       padding: 32px 28px;
       display: flex;
       flex-direction: column;
       gap: 16px;
-      transition: border-color 0.2s, background 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
 
     .testimonial-card:hover {
-      background: rgba(255,255,255,0.09);
-      border-color: rgba(0,132,255,0.4);
+      border-color: #0084ff;
+      box-shadow: 0 8px 32px rgba(0,132,255,0.1);
+      transform: translateY(-3px);
     }
 
     .stars {
@@ -864,14 +866,14 @@
     .testimonial-quote {
       font-size: 15px;
       line-height: 1.75;
-      color: rgba(255,255,255,0.82);
+      color: #555;
       flex: 1;
     }
 
     .testimonial-author {
       font-size: 14px;
       font-weight: 700;
-      color: #fff;
+      color: #1a1a2e;
       margin-top: 4px;
     }
 
