@@ -1,0 +1,31 @@
+# InboxRoute
+
+InboxRoute is a fully managed AI-powered DM automation service for Instagram, Facebook, TikTok, WhatsApp, and Telegram. We help service businesses automatically respond to direct messages, qualify leads, and book appointments 24/7 without any manual effort.
+
+## What We Do
+- Custom AI conversation workflows built for your business
+- Instant 24/7 replies to DMs across Instagram, Facebook, TikTok, WhatsApp, and Telegram
+- Lead qualification and objection handling
+- Automatic routing to your booking link or website
+- Fully managed — no setup or ongoing management required
+
+## Plans
+- Starter: $199/month — single platform, unlimited DM conversations
+- Standard: $299/month — advanced objection handling, multi-service management, bi-weekly reports
+- Pro: $499/month — multi-platform, weekly strategy calls, booking system integration
+
+## Industries Served
+Professional services, fitness and wellness, real estate, beauty and salons, e-commerce, restaurants, education, B2B services
+
+## Key Pages
+- Homepage: https://www.inboxroute.net/
+- Solutions: https://www.inboxroute.net/solutions
+- Revenue Calculator: https://www.inboxroute.net/calculator
+- About: https://www.inboxroute.net/about
+
+## Contact
+Book a call: https://calendly.com/inboxroute-ai/30min
+LinkedIn: https://www.linkedin.com/company/inboxroute
+
+## Compliance
+InboxRoute operates on fully compliant infrastructure across all supported platforms.
