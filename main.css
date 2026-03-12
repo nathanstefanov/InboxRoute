@@ -9,10 +9,12 @@ body {
 }
 
 /* ─── CONTEXTUAL INTERNAL LINKS ──────────────────────────── */
-.ctx-link {
+.inline-link {
   color: #0084ff;
+  text-decoration: none;
+}
+.inline-link:hover {
   text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
 /* ─── GLOBAL NAV ─────────────────────────────────────────── */
