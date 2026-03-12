@@ -8,6 +8,13 @@ body {
   overflow-x: hidden;
 }
 
+/* ─── CONTEXTUAL INTERNAL LINKS ──────────────────────────── */
+.ctx-link {
+  color: #0084ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ─── GLOBAL NAV ─────────────────────────────────────────── */
 #site-nav {
   position: sticky;
