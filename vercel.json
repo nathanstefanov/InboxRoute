@@ -36,9 +36,4 @@
     { "source": "/client-intake",            "destination": "https://calendly.com/inboxroute-ai/30min", "permanent": true },
     { "source": "/privacy-policy",           "destination": "/privacy",                                  "permanent": true },
     { "source": "/terms-of-service",         "destination": "/terms",                                    "permanent": true }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/404" }
-  ]
-}
+  ]}
