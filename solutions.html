@@ -156,109 +156,67 @@
 
     /* ─── CTA ─────────────────────────────────────────────── */
     .cta-wrapper {
-      padding: 0 5% 64px;
-    }
-
-    .cta-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 0 5% 72px;
     }
 
     .cta-section {
-      background: linear-gradient(135deg, #0084ff 0%, #00c6ff 100%);
-      border-radius: 20px;
-      padding: 56px 32px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      padding: 72px 40px;
+      background: #fff;
     }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .cta-content { position: relative; z-index: 1; }
 
     .cta-title {
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 14px;
-      line-height: 1.2;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-title span {
+      background: linear-gradient(90deg, #0084ff, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .cta-description {
       font-size: clamp(15px, 2vw, 17px);
-      color: rgba(255,255,255,0.92);
-      margin-bottom: 28px;
-    }
-
-    .cta-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
+      color: #666;
+      max-width: 440px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
     }
 
     .cta-button {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #fff;
-      color: #0084ff;
-      padding: 15px 36px;
+      background: #0084ff;
+      color: #fff;
+      padding: 16px 36px;
       border-radius: 12px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.3px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+      box-shadow: 0 4px 24px rgba(0,132,255,0.3);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
       white-space: nowrap;
     }
 
     .cta-button:hover {
+      background: #0070d6;
       transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-    }
-
-    .cta-button-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-      padding: 15px 36px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.3px;
-      border: 2px solid rgba(255,255,255,0.5);
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-      transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-      white-space: nowrap;
-    }
-
-    .cta-button-secondary:hover {
-      background: rgba(255,255,255,0.25);
-      border-color: rgba(255,255,255,0.9);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 32px rgba(0,132,255,0.4);
     }
 
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (min-width: 640px) {
       .solutions-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .industries-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .cta-buttons { flex-direction: row; justify-content: center; }
+
     }
 
     @media (min-width: 1002px) {
@@ -544,17 +502,10 @@
 
 <!-- ─── CTA ────────────────────────────────────────────────── -->
 <div class="cta-wrapper">
-  <div class="cta-inner">
-    <div class="cta-section">
-      <div class="cta-content">
-        <h2 class="cta-title">Ready to Get Started?</h2>
-        <p class="cta-description">Let our team build a fully managed workflow so you and your team can focus on running your business.</p>
-        <div class="cta-buttons">
-          <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
-          <a href="calculator.html" class="cta-button-secondary">Calculate Your Revenue Leak</a>
-        </div>
-      </div>
-    </div>
+  <div class="cta-section">
+    <h2 class="cta-title">Stop leaving money<br><span>in your DMs.</span></h2>
+    <p class="cta-description">Start turning your DMs into appointments.</p>
+    <a href="https://calendly.com/inboxroute-ai/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Free Call →</a>
   </div>
 </div>
 
