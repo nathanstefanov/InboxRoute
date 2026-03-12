@@ -267,19 +267,6 @@
       margin-bottom: 44px;
     }
 
-    .about-testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .about-testimonials-grid .about-testimonial-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      max-width: 520px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
     .about-testimonial-card {
       background: #fff;
       border: 1.5px solid #e5e7eb;
@@ -336,11 +323,6 @@
       .cta-section h2 { font-size: 24px; }
       .cta-section p { font-size: 15px; }
       .about-testimonials { margin-bottom: 48px; }
-      .about-testimonials-grid { grid-template-columns: 1fr; }
-      .about-testimonials-grid .about-testimonial-card:last-child:nth-child(odd) {
-        grid-column: auto;
-        max-width: 100%;
-      }
     }
   </style>
 </head>
@@ -468,38 +450,61 @@
   <!-- Testimonials -->
   <section class="about-testimonials">
     <h2 class="about-testimonials-heading">What Our Clients Say</h2>
-    <div class="about-testimonials-grid">
+    <div class="testimonial-carousel">
+      <div class="carousel-track">
 
-      <div class="about-testimonial-card">
-        <div class="about-stars">★★★★★</div>
-        <p class="about-testimonial-quote">"Our organic social media drives great traffic, but we were terrible at capturing the inbound DMs efficiently. InboxRoute routes those high-intent conversations straight to our booking link in seconds. It's the missing piece to any serious social media funnel."</p>
-        <p class="about-testimonial-author">George Ivanov</p>
+        <div class="testimonial-slide active">
+          <div class="about-testimonial-card">
+            <div class="about-stars">★★★★★</div>
+            <p class="about-testimonial-quote">"Our organic social media drives great traffic, but we were terrible at capturing the inbound DMs efficiently. InboxRoute routes those high-intent conversations straight to our booking link in seconds. It's the missing piece to any serious social media funnel."</p>
+            <p class="about-testimonial-author">George I.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="about-testimonial-card">
+            <div class="about-stars">★★★★★</div>
+            <p class="about-testimonial-quote">"Weekends used to be a dead zone for our sales pipeline because nobody was manning the inbox. InboxRoute changed that overnight. It actively qualifies and books clients on Saturdays and Sundays while our actual team is completely logged off. Massive game changer for our business."</p>
+            <p class="about-testimonial-author">Eugene B.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="about-testimonial-card">
+            <div class="about-stars">★★★★★</div>
+            <p class="about-testimonial-quote">"I tried building automated replies through Meta in the past and it was a massive headache. The team at InboxRoute handles everything from start to finish. It's a completely hands-off experience, and the custom workflow they built handles objections perfectly. Highly recommend if you want your time back."</p>
+            <p class="about-testimonial-author">Ethan B.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="about-testimonial-card">
+            <div class="about-stars">★★★★★</div>
+            <p class="about-testimonial-quote">"Incredible service. It doesn't just blindly send links to people; it actually holds a dynamic conversation and answers questions based on our exact policies. It's exactly like having a dedicated 24/7 receptionist for your social media channels."</p>
+            <p class="about-testimonial-author">Dylan S.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="about-testimonial-card">
+            <div class="about-stars">★★★★★</div>
+            <p class="about-testimonial-quote">"I was initially worried an automated system would sound robotic and turn off potential clients, but InboxRoute's setup sounds incredibly natural. It answers specific questions about our services and routes them straight to our booking link. Our conversion rate from messages has never been higher."</p>
+            <p class="about-testimonial-author">Jackson L.</p>
+          </div>
+        </div>
+
       </div>
-
-      <div class="about-testimonial-card">
-        <div class="about-stars">★★★★★</div>
-        <p class="about-testimonial-quote">"Weekends used to be a dead zone for our sales pipeline because nobody was manning the inbox. InboxRoute changed that overnight. It actively qualifies and books clients on Saturdays and Sundays while our actual team is completely logged off. Massive game changer for our business."</p>
-        <p class="about-testimonial-author">Eugene Bae</p>
+      <div class="carousel-controls">
+        <button type="button" class="carousel-btn carousel-prev" aria-label="Previous testimonial">&#8592;</button>
+        <div class="carousel-dots">
+          <button type="button" class="carousel-dot active" aria-label="Testimonial 1"></button>
+          <button type="button" class="carousel-dot" aria-label="Testimonial 2"></button>
+          <button type="button" class="carousel-dot" aria-label="Testimonial 3"></button>
+          <button type="button" class="carousel-dot" aria-label="Testimonial 4"></button>
+          <button type="button" class="carousel-dot" aria-label="Testimonial 5"></button>
+        </div>
+        <button type="button" class="carousel-btn carousel-next" aria-label="Next testimonial">&#8594;</button>
       </div>
-
-      <div class="about-testimonial-card">
-        <div class="about-stars">★★★★★</div>
-        <p class="about-testimonial-quote">"I tried building automated replies through Meta in the past and it was a massive headache. The team at InboxRoute handles everything from start to finish. It's a completely hands-off experience, and the custom workflow they built handles objections perfectly. Highly recommend if you want your time back."</p>
-        <p class="about-testimonial-author">Ethan Baedorf</p>
-      </div>
-
-      <div class="about-testimonial-card">
-        <div class="about-stars">★★★★★</div>
-        <p class="about-testimonial-quote">"Incredible service. It doesn't just blindly send links to people; it actually holds a dynamic conversation and answers questions based on our exact policies. It's exactly like having a dedicated 24/7 receptionist for your social media channels."</p>
-        <p class="about-testimonial-author">Dylan Sak</p>
-      </div>
-
-      <div class="about-testimonial-card">
-        <div class="about-stars">★★★★★</div>
-        <p class="about-testimonial-quote">"I was initially worried an automated system would sound robotic and turn off potential clients, but InboxRoute's setup sounds incredibly natural. It answers specific questions about our services and routes them straight to our booking link. Our conversion rate from messages has never been higher."</p>
-        <p class="about-testimonial-author">Jackson Lewis</p>
-      </div>
-
     </div>
   </section>
 
@@ -547,6 +552,6 @@
   </div>
 </footer>
 </div>
-
+<script src="/carousel.js"></script>
 </body>
 </html>
