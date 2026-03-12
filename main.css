@@ -259,7 +259,6 @@ body { min-height: 100vh; display: flex; flex-direction: column; }
   height: 30px;
   width: auto;
   display: block;
-  filter: invert(1);
 }
 
 footer {
